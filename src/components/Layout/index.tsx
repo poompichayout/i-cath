@@ -1,13 +1,12 @@
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useState } from 'react'
 
 import AppBar from '@mui/material/AppBar'
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import DashboardSidebar from './DashboardSidebar'
 
 const Layout = ({ children }: PropsWithChildren) => {
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <div>
       <AppBar position="fixed" elevation={0} color="primary">
@@ -16,11 +15,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           <Typography>Mario</Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" anchor="left">
-        <div>
-          <Typography variant="h5">iCath</Typography>
-        </div>
-      </Drawer>
+      <DashboardSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
       <main>{children}</main>
     </div>
   )
