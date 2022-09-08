@@ -20,12 +20,12 @@ const NormalValuesPage: NextPage = () => {
         pt={6}
       >
         <Grid item xs={12} sm={10} lg={8}>
-          <Typography variant="h2">Cardiac Pressure Measurement</Typography>
+          <Typography variant="h3">Cardiac Pressure Measurement</Typography>
           <Divider sx={{ mt: 3 }} />
           <CardiacPressureTable />
         </Grid>
-        <Grid item xs={12} sm={10} lg={8}>
-          <Typography variant="h2">Normal Hemodynamic Value</Typography>
+        <Grid item xs={12} sm={10} lg={8} mt={3}>
+          <Typography variant="h3">Normal Hemodynamic Value</Typography>
           <Divider sx={{ mt: 3 }} />
           <NormalHemodynamicTable />
         </Grid>

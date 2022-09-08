@@ -18,7 +18,7 @@ const CalculatorPage: NextPage = () => {
         pt={6}
       >
         <Grid item xs={12} sm={10} lg={8}>
-          <Typography variant="h2">Cardiac Output- Fick</Typography>
+          <Typography variant="h3">Cardiac Output - Fick</Typography>
           <Divider sx={{ mt: 3 }} />
           <FickForm />
         </Grid>
