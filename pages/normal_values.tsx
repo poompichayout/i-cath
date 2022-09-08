@@ -4,12 +4,12 @@ import Meta from 'src/components/Meta'
 
 import styles from '../styles/Home.module.css'
 
-const About: NextPage = () => {
+const NormalValuesPage: NextPage = () => {
   return (
     <div className={styles.container}>
-      <Meta title="About us" />
+      <Meta title="Normal Values" />
     </div>
   )
 }
 
-export default About
+export default NormalValuesPage

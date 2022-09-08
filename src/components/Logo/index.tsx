@@ -37,7 +37,7 @@ export default function Logo() {
           height={100}
         />
       </LogoImg>
-      <LogoText>I Cath</LogoText>
+      <LogoText>&nbsp;&nbsp;I - Cath</LogoText>
     </LogoWrapper>
   )
 }

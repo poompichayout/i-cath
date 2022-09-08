@@ -4,12 +4,12 @@ import Meta from 'src/components/Meta'
 
 import styles from '../styles/Home.module.css'
 
-const About: NextPage = () => {
+const CatheterSimPage: NextPage = () => {
   return (
     <div className={styles.container}>
-      <Meta title="About us" />
+      <Meta title="Catheterization Simulator" />
     </div>
   )
 }
 
-export default About
+export default CatheterSimPage

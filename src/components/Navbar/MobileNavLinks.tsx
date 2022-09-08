@@ -55,16 +55,16 @@ export default function MobileNavLinks() {
       {isOpen && (
         <LinksWrapper>
           <LinkItem>
-            <Link href="#">Normal values</Link>
+            <Link href="/normal_values">Normal values</Link>
           </LinkItem>
           <LinkItem>
-            <Link href="#">Catheter sim</Link>
+            <Link href="/catheter_sim">Catheter sim</Link>
           </LinkItem>
           <LinkItem>
-            <Link href="#">Calculator</Link>
+            <Link href="/calculator">Calculator</Link>
           </LinkItem>
           <LinkItem>
-            <Link href="#">About us</Link>
+            <Link href="/about">About us</Link>
           </LinkItem>
           <Marginer />
           <Accessibility />

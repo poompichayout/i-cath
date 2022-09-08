@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from '@emotion/styled'
+import PlainLink from 'src/Link'
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -33,7 +34,7 @@ const LinkItem = styled.li`
   }
 `
 
-const Link = styled.a`
+const Link = styled(PlainLink)`
   text-decoration: none;
   color: inherit;
   font-size: inherit;
@@ -44,16 +45,16 @@ export default function NavLinks() {
     <NavLinksContainer>
       <LinksWrapper>
         <LinkItem>
-          <Link href="#">Normal values</Link>
+          <Link href="/normal_values">Normal values</Link>
         </LinkItem>
         <LinkItem>
-          <Link href="#">Catheter sim</Link>
+          <Link href="/catheter_sim">Catheter sim</Link>
         </LinkItem>
         <LinkItem>
-          <Link href="#">Calculator</Link>
+          <Link href="/calculator">Calculator</Link>
         </LinkItem>
         <LinkItem>
-          <Link href="#">About us</Link>
+          <Link href="/about">About us</Link>
         </LinkItem>
       </LinksWrapper>
     </NavLinksContainer>
