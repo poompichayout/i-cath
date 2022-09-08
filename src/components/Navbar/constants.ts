@@ -8,7 +8,7 @@ export const NAVBAR = [
     text: 'Catheterization simulator',
   },
   {
-    path: '/calculator',
+    path: '/calculator/fick',
     text: 'Calculator',
   },
   {

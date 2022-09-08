@@ -4,9 +4,9 @@ import type { NextPage } from 'next'
 import FickForm from 'src/components/Form/Fick'
 import Meta from 'src/components/Meta'
 
-import styles from '../styles/Home.module.css'
+import styles from 'styles/Home.module.css'
 
-const CalculatorPage: NextPage = () => {
+const FickPage: NextPage = () => {
   return (
     <div className={styles.container}>
       <Meta title="Calculator" />
@@ -27,4 +27,4 @@ const CalculatorPage: NextPage = () => {
   )
 }
 
-export default CalculatorPage
+export default FickPage
