@@ -1,10 +1,18 @@
 // ----------------------------------------------------------------------
 
 function pxToRem(value: number) {
-  return `${value / 16}rem`;
+  return `${value / 16}rem`
 }
 
-function responsiveFontSizes({ sm, md, lg }: { sm: number, md: number, lg:number }) {
+function responsiveFontSizes({
+  sm,
+  md,
+  lg,
+}: {
+  sm: number
+  md: number
+  lg: number
+}) {
   return {
     '@media (min-width:600px)': {
       fontSize: pxToRem(sm),
@@ -15,10 +23,10 @@ function responsiveFontSizes({ sm, md, lg }: { sm: number, md: number, lg:number
     '@media (min-width:1200px)': {
       fontSize: pxToRem(lg),
     },
-  };
+  }
 }
 
-const FONT_PRIMARY = 'Public Sans, sans-serif';
+const FONT_PRIMARY = 'Public Sans, sans-serif'
 
 const typography = {
   fontFamily: FONT_PRIMARY,
@@ -96,6 +104,6 @@ const typography = {
     fontSize: pxToRem(14),
     textTransform: 'capitalize',
   },
-};
+}
 
-export default typography;
+export default typography

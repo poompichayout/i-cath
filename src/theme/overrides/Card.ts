@@ -1,4 +1,4 @@
-import { Theme } from "@mui/material";
+import { Theme } from '@mui/material'
 
 export default function Card(theme: Theme) {
   return {
@@ -30,5 +30,5 @@ export default function Card(theme: Theme) {
         },
       },
     },
-  };
+  }
 }

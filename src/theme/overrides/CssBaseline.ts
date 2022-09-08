@@ -1,4 +1,4 @@
-import { Theme } from "@mui/material";
+import { Theme } from '@mui/material'
 
 export default function CssBaseline(theme: Theme) {
   return {
@@ -41,5 +41,5 @@ export default function CssBaseline(theme: Theme) {
         },
       },
     },
-  };
+  }
 }

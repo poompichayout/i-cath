@@ -1,14 +1,14 @@
-import { Theme } from '@mui/material';
+import { Theme } from '@mui/material'
 
-import Card from './Card';
-import Paper from './Paper';
-import Input from './Input';
-import Button from './Button';
-import Tooltip from './Tooltip';
-import Backdrop from './Backdrop';
-import Typography from './Typography';
-import CssBaseline from './CssBaseline';
-import Autocomplete from './Autocomplete';
+import Card from './Card'
+import Paper from './Paper'
+import Input from './Input'
+import Button from './Button'
+import Tooltip from './Tooltip'
+import Backdrop from './Backdrop'
+import Typography from './Typography'
+import CssBaseline from './CssBaseline'
+import Autocomplete from './Autocomplete'
 
 export default function ComponentsOverrides(theme: Theme) {
   return Object.assign(
@@ -21,5 +21,5 @@ export default function ComponentsOverrides(theme: Theme) {
     Typography(theme),
     CssBaseline(theme),
     Autocomplete(theme)
-  );
+  )
 }
