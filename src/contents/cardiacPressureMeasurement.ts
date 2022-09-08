@@ -1,5 +1,5 @@
 interface PreasureProps {
-  id: number
+  id: string
   chamber: string
   format: string
   mean: string
@@ -9,7 +9,7 @@ interface PreasureProps {
 
 export const cardiacPressureMeasurement: PreasureProps[] = [
   {
-    id: 1,
+    id: 'c1',
     chamber: 'Aorta',
     format: 'Sys/Dias (mean)',
     mean: '-',
@@ -17,7 +17,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '95-100%',
   },
   {
-    id: 2,
+    id: 'c2',
     chamber: 'Pulmonary',
     format: 'mean',
     mean: '15 mmHg',
@@ -25,7 +25,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '75-80%',
   },
   {
-    id: 3,
+    id: 'c3',
     chamber: 'Systolic PAP',
     format: 'Sys',
     mean: '19 mmHg',
@@ -33,7 +33,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '75-80%',
   },
   {
-    id: 4,
+    id: 'c4',
     chamber: 'Diastolic PAP',
     format: 'Dias',
     mean: '10 mmHg',
@@ -41,7 +41,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '75-80%',
   },
   {
-    id: 5,
+    id: 'c5',
     chamber: 'PCWP (Left atrium)',
     format: 'a-wave\nv-wave\nmean',
     mean: '9 mmHg',
@@ -49,7 +49,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '95-100%',
   },
   {
-    id: 6,
+    id: 'c6',
     chamber: 'Right atrium',
     format: 'a-wave\nv-wave\nmean',
     mean: '3 mmHg',
@@ -57,7 +57,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '75-80%',
   },
   {
-    id: 7,
+    id: 'c7',
     chamber: 'Left ventricle',
     format: 'Sys/Dias\nEnd-dias (EDP)',
     mean: '-',
@@ -65,7 +65,7 @@ export const cardiacPressureMeasurement: PreasureProps[] = [
     o2content: '95-100%',
   },
   {
-    id: 8,
+    id: 'c8',
     chamber: 'Right ventricle',
     format: 'Sys/Dias\nEnd-dias (EDP)',
     mean: '-',

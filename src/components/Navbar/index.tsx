@@ -1,9 +1,7 @@
 import React from 'react'
-import { useMediaQuery } from 'react-responsive'
 
 import styled from '@emotion/styled'
-
-import { DeviceSize } from 'src/responsive'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 import Logo from '../Logo'
 
@@ -39,7 +37,8 @@ const RightSection = styled.div`
 `
 
 export default function Navbar() {
-  const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
     <NavbarContainer>
@@ -48,8 +47,7 @@ export default function Navbar() {
       </LeftSection>
       <MiddleSection>{!isMobile && <NavLinks />}</MiddleSection>
       <RightSection>
-        {!isMobile && <Accessibility />}
-        {isMobile && <MobileNavLinks />}
+        {!isMobile ? <Accessibility /> : <MobileNavLinks />}
       </RightSection>
     </NavbarContainer>
   )

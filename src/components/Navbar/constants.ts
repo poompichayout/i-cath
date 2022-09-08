@@ -5,7 +5,7 @@ export const NAVBAR = [
   },
   {
     path: '/catheter_sim',
-    text: 'Catheter sim',
+    text: 'Catheterization simulator',
   },
   {
     path: '/calculator',

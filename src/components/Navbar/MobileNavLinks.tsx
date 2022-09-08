@@ -52,7 +52,7 @@ export default function MobileNavLinks() {
 
   return (
     <NavLinksContainer>
-      <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+      <MenuToggle isOpen={isOpen} toggle={() => setOpen((prev) => !prev)} />
       {isOpen && (
         <LinksWrapper>
           {NAVBAR.map((e) => (
