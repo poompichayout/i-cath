@@ -2,6 +2,9 @@ import React from 'react'
 
 import styled from '@emotion/styled'
 import PlainLink from 'src/Link'
+import { useRouter } from 'next/router'
+
+import { NAVBAR } from './constants'
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -16,6 +19,10 @@ const LinksWrapper = styled.ul`
   height: 100%;
   list-style: none;
 `
+
+type LinkItemProps = {
+  active: boolean
+}
 
 const LinkItem = styled.li`
   height: 100%;
@@ -32,6 +39,9 @@ const LinkItem = styled.li`
   &:hover {
     border-top: 2px solid #2ecc71;
   }
+
+  border-top: ${(props: LinkItemProps) =>
+    props.active ? '2px solid #2ecc71' : 'none'};
 `
 
 const Link = styled(PlainLink)`
@@ -41,21 +51,15 @@ const Link = styled(PlainLink)`
 `
 
 export default function NavLinks() {
+  const router = useRouter()
   return (
     <NavLinksContainer>
       <LinksWrapper>
-        <LinkItem>
-          <Link href="/normal_values">Normal values</Link>
-        </LinkItem>
-        <LinkItem>
-          <Link href="/catheter_sim">Catheter sim</Link>
-        </LinkItem>
-        <LinkItem>
-          <Link href="/calculator">Calculator</Link>
-        </LinkItem>
-        <LinkItem>
-          <Link href="/about">About us</Link>
-        </LinkItem>
+        {NAVBAR.map((e) => (
+          <LinkItem key={e.path} active={router.pathname === e.path}>
+            <Link href={e.path}>{e.text}</Link>
+          </LinkItem>
+        ))}
       </LinksWrapper>
     </NavLinksContainer>
   )

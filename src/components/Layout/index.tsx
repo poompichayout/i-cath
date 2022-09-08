@@ -6,7 +6,7 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <div>
       <Navbar />
-      <main>{children}</main>
+      <main style={{ marginTop: '60px' }}>{children}</main>
     </div>
   )
 }

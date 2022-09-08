@@ -4,10 +4,11 @@ interface MetaProps {
   title: string
 }
 
-export default function Meta({ title }: MetaProps) {
+export default function Meta({ title: titleString }: MetaProps) {
+  const titleDisplay = `${titleString} - iCath`
   return (
     <Head>
-      <title>{title} - iCath</title>
+      <title>{titleDisplay}</title>
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"

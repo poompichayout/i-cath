@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 
 import Accessibility from './Accessibility'
 import MenuToggle from './MenuToggle'
+import { NAVBAR } from './constants'
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -54,18 +55,11 @@ export default function MobileNavLinks() {
       <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
       {isOpen && (
         <LinksWrapper>
-          <LinkItem>
-            <Link href="/normal_values">Normal values</Link>
-          </LinkItem>
-          <LinkItem>
-            <Link href="/catheter_sim">Catheter sim</Link>
-          </LinkItem>
-          <LinkItem>
-            <Link href="/calculator">Calculator</Link>
-          </LinkItem>
-          <LinkItem>
-            <Link href="/about">About us</Link>
-          </LinkItem>
+          {NAVBAR.map((e) => (
+            <LinkItem key={e.path}>
+              <Link href={e.path}>{e.text}</Link>
+            </LinkItem>
+          ))}
           <Marginer />
           <Accessibility />
         </LinksWrapper>

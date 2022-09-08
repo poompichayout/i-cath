@@ -18,6 +18,9 @@ const NavbarContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 1.5em;
+  position: fixed;
+  background-color: white;
+  top: 0;
 `
 
 const LeftSection = styled.div`
