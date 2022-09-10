@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import styled from '@emotion/styled'
 import PlainLink from 'src/Link'
+import { ListItem, useTheme } from '@mui/material'
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -40,19 +41,24 @@ const Link = styled(PlainLink)`
 `
 
 export default function Logo() {
+  const theme = useTheme()
+
   return (
-    <Link href="/">
-      <LogoWrapper>
-        <LogoImg>
-          <Image
-            src="/images/logo.png"
-            alt="icon logo"
-            width={100}
-            height={100}
-          />
-        </LogoImg>
-        <LogoText>&nbsp;&nbsp;I - Cath</LogoText>
-      </LogoWrapper>
-    </Link>
+    <ListItem
+      component={Link}
+      button
+      href="/"
+      sx={{ height: theme.mixins.toolbar }}
+    >
+      <LogoImg>
+        <Image
+          src="/images/logo.png"
+          alt="icon logo"
+          width={100}
+          height={100}
+        />
+      </LogoImg>
+      <LogoText>&nbsp;&nbsp;I - Cath</LogoText>
+    </ListItem>
   )
 }

@@ -1,23 +1,29 @@
-import { Grid } from '@mui/material'
+import React, { PropsWithChildren, useState } from 'react'
 
-import { PropsWithChildren } from 'react'
+import { Grid, useMediaQuery, useTheme } from '@mui/material'
 
 import Navbar from 'src/components/Navbar'
 import Sidebar from 'src/components/Sidebar'
 
 const CalculatorLayout = ({ children }: PropsWithChildren) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false)
+
   return (
-    <div>
-      <Navbar />
+    <React.Fragment>
+      <Navbar toggleDrawer={() => setOpenDrawer((prev) => !prev)} />
+      <Sidebar
+        open={isMobile ? openDrawer : true}
+        onClose={() => setOpenDrawer(false)}
+      />
       <Grid container style={{ marginTop: '60px', display: 'flex' }}>
-        <Grid item sm={0} sx={{ position: 'fixed', left: 0, width: 350 }}>
-          <Sidebar />
-        </Grid>
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12}>
           {children}
         </Grid>
       </Grid>
-    </div>
+    </React.Fragment>
   )
 }
 

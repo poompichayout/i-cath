@@ -1,55 +1,47 @@
 import React from 'react'
 
 import styled from '@emotion/styled'
-import { useMediaQuery, useTheme } from '@mui/material'
+import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from '@mui/material'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
 
-import Logo from '../Logo'
+import { DRAWER_WIDTH } from '../contants'
 
-import Accessibility from './Accessibility'
 import NavLinks from './NavLinks'
-import MobileNavLinks from './MobileNavLinks'
 
-const NavbarContainer = styled.div`
-  width: 100%;
-  height: 60px;
-  box-shadow: 0 1px 3px rgba(15, 15, 15, 0.13);
-  display: flex;
-  align-items: center;
-  padding: 0 1.5em;
-  position: fixed;
-  background-color: white;
-  top: 0;
-  z-index: 50;
-`
-
-const LeftSection = styled.div`
-  display: flex;
-`
-
-const MiddleSection = styled.div`
+const MiddleSection = styled(Box)`
   display: flex;
   flex: 2;
   height: 100%;
   justify-content: center;
 `
 
-const RightSection = styled.div`
-  display: flex;
-`
+interface NavBarProps {
+  toggleDrawer: () => void
+}
 
-export default function Navbar() {
+export default function Navbar({ toggleDrawer }: NavBarProps) {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <NavbarContainer>
-      <LeftSection>
-        <Logo />
-      </LeftSection>
-      <MiddleSection>{!isMobile && <NavLinks />}</MiddleSection>
-      <RightSection>
-        {!isMobile ? <Accessibility /> : <MobileNavLinks />}
-      </RightSection>
-    </NavbarContainer>
+    <AppBar
+      position="fixed"
+      color="default"
+      sx={{
+        width: `calc(100% - ${DRAWER_WIDTH}px)`,
+        ml: `${DRAWER_WIDTH}px`,
+      }}
+      style={{ width: '100%' }}
+    >
+      <Toolbar>
+        {isMobile && (
+          <IconButton onClick={toggleDrawer}>
+            <MenuIcon sx={{ color: '#2ecc71' }} />
+          </IconButton>
+        )}
+        <MiddleSection>{!isMobile && <NavLinks />}</MiddleSection>
+      </Toolbar>
+    </AppBar>
   )
 }

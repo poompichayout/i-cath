@@ -7,8 +7,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 
 import type { AppProps } from 'next/app'
 
-import MainLayout from 'src/components/Layout/MainLayout'
-import CalculatorLayout from 'src/components/Layout/CalculatorLayout'
+import PageLayout from 'src/components/Layout/MainLayout'
 import createEmotionCache from 'src/createEmotionCache'
 import ThemeProvider from 'src/theme'
 import { useRouter } from 'next/router'
@@ -22,10 +21,6 @@ interface ApplicationProps extends AppProps {
 export default function MyApp(props: ApplicationProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
   const { pathname } = useRouter()
-
-  const PageLayout = !pathname.startsWith('/calculator')
-    ? MainLayout
-    : CalculatorLayout
 
   return (
     <CacheProvider value={emotionCache}>

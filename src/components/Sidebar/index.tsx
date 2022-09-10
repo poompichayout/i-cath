@@ -1,63 +1,55 @@
-import styled from '@emotion/styled'
-import { listItemIconClasses } from '@mui/material'
-import Box from '@mui/material/Box'
+import React from 'react'
+
+import { useMediaQuery, useTheme } from '@mui/material'
+
 import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemText from '@mui/material/ListItemText'
-import Link from 'src/Link'
+import Divider from '@mui/material/Divider'
+import Drawer from '@mui/material/Drawer'
+import Toolbar from '@mui/material/Toolbar'
 
-const items = [
-  {
-    path: 'fick',
-    text: 'Cardiac Output - Fick',
-  },
-  {
-    path: 'fick',
-    text: 'CardiacIndex (CI)',
-  },
-  {
-    path: 'fick',
-    text: 'Systemic vascularresistance (SVR)',
-  },
-  {
-    path: 'fick',
-    text: 'Pulmonary vascularresistance (PVR)',
-  },
-  {
-    path: 'fick',
-    text: 'Pulmonary artery pulsatility index (PAPi)',
-  },
-  {
-    path: 'fick',
-    text: 'The Gorlin equation - Valve area measurement',
-  },
-  {
-    path: 'fick',
-    text: 'TheHakki equation',
-  },
-]
+import { DRAWER_WIDTH } from '../contants'
+import Logo from '../Logo'
+import { NAVBAR } from '../Navbar/constants'
 
-const SidebarWrapper = styled(Box)`
-  min-height: 100vh;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(15, 15, 15, 0.13);
-  z-index: 20;
-`
+import MenuListItem from './MenuListItem'
 
-const Sidebar = () => {
+interface SidebarProps {
+  open: boolean
+  onClose: () => void
+}
+
+const Sidebar = ({ open, onClose }: SidebarProps) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
-    <SidebarWrapper>
-      <List>
-        {items.map((e, index) => (
-          <ListItem key={index}>
-            <Link href={`/calculator/${e.path}`}>
-              <ListItemText primary={e.text} />
-            </Link>
-          </ListItem>
+    <Drawer
+      anchor="left"
+      open={!isMobile || open}
+      variant={isMobile ? 'temporary' : 'permanent'}
+      disablePortal={!isMobile}
+      onClose={onClose}
+      sx={{
+        width: DRAWER_WIDTH,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: DRAWER_WIDTH,
+          boxSizing: 'border-box',
+          border: 'none',
+          boxShadow: `0px calc(${theme.mixins.toolbar.minHeight}px + 8px) 4px rgba(0, 0, 0, 0.08)`,
+        },
+      }}
+    >
+      <Toolbar disableGutters>
+        <Logo />
+      </Toolbar>
+      <Divider />
+      <List disablePadding>
+        {NAVBAR.map((e, index) => (
+          <MenuListItem route={e} key={index} onClose={onClose} />
         ))}
       </List>
-    </SidebarWrapper>
+    </Drawer>
   )
 }
 
