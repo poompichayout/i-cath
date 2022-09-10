@@ -6,18 +6,15 @@ import Meta from 'src/components/Meta'
 import CardiacPressureTable from 'src/components/CardiacPressureTable'
 import NormalHemodynamicTable from 'src/components/NormalHemodynamicTable'
 
-import styles from '../styles/Home.module.css'
-
 const NormalValuesPage: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <>
       <Meta title="Normal Values" />
       <Grid
         container
-        flexDirection="column"
-        alignItems="center"
         spacing={2}
         pt={6}
+        sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <Grid item xs={12} sm={10} lg={8}>
           <Typography variant="h3">Cardiac Pressure Measurement</Typography>
@@ -30,7 +27,7 @@ const NormalValuesPage: NextPage = () => {
           <NormalHemodynamicTable />
         </Grid>
       </Grid>
-    </div>
+    </>
   )
 }
 

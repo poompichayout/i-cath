@@ -1,9 +1,17 @@
 import React, { PropsWithChildren, useState } from 'react'
 
-import { Grid, useMediaQuery, useTheme } from '@mui/material'
+import {
+  Box,
+  Container,
+  Grid,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 
 import Navbar from 'src/components/Navbar'
 import Sidebar from 'src/components/Sidebar'
+import { DRAWER_WIDTH } from 'src/components/contants'
 
 const MainLayout = ({ children }: PropsWithChildren) => {
   const theme = useTheme()
@@ -12,18 +20,18 @@ const MainLayout = ({ children }: PropsWithChildren) => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false)
 
   return (
-    <React.Fragment>
+    <div style={{ marginLeft: isMobile ? undefined : `${DRAWER_WIDTH}px` }}>
       <Navbar toggleDrawer={() => setOpenDrawer((prev) => !prev)} />
       <Sidebar
         open={isMobile ? openDrawer : true}
         onClose={() => setOpenDrawer(false)}
       />
-      <Grid container style={{ marginTop: '60px', display: 'flex' }}>
-        <Grid item xs={12}>
-          {children}
-        </Grid>
-      </Grid>
-    </React.Fragment>
+      <Container maxWidth={false}>
+        <Toolbar />
+        {children}
+        <Box pb={2} />
+      </Container>
+    </div>
   )
 }
 
