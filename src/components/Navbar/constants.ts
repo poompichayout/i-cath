@@ -4,34 +4,34 @@ export const SUB_CALCULATOR_NAV = [
     text: 'Cardiac Output - Fick',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/ci',
     text: 'CardiacIndex (CI)',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/svr',
     text: 'Systemic vascularresistance (SVR)',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/pvr',
     text: 'Pulmonary vascularresistance (PVR)',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/papi',
     text: 'Pulmonary artery pulsatility index (PAPi)',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/gorlin',
     text: 'The Gorlin equation - Valve area measurement',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator/hakki',
     text: 'The Hakki equation',
   },
 ]
 
 export const SUB_NORMAL_VALUES_NAV = [
-  { path: '/normal_values#cardiac_pressure', text: 'Cardiac Pressure' },
-  { path: '/normal_values#hemodynamic', text: 'Normal Hemodynamic' },
+  { path: '/normal_values/cardiac_pressure', text: 'Cardiac Pressure' },
+  { path: '/normal_values/hemodynamic', text: 'Normal Hemodynamic' },
 ]
 
 export const NAVBAR = [

@@ -11,7 +11,7 @@ const FickForm = () => {
   const [result, setResult] = useState(0)
   return (
     <Grid container mt={3}>
-      <Grid item xs={12} spacing={2}>
+      <Grid item xs={12}>
         <Box component="form">
           <Grid container spacing={2}>
             <Grid

@@ -2,15 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 
 import styled from '@emotion/styled'
+import { Box, ListItem, Typography, useTheme } from '@mui/material'
+
 import PlainLink from 'src/Link'
-import { ListItem, useTheme } from '@mui/material'
 
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const LogoImg = styled.div`
+const LogoImg = styled(Box)`
   width: 29px;
   height: 29px;
 
@@ -20,12 +16,10 @@ const LogoImg = styled.div`
   }
 `
 
-const LogoText = styled.h2`
-  font-size: 16px;
+const LogoText = styled(Typography)`
   margin: 0;
   margin-left: 4px;
   color: #222;
-  font-weight: 500;
 `
 
 const Link = styled(PlainLink)`
@@ -58,7 +52,9 @@ export default function Logo() {
           height={100}
         />
       </LogoImg>
-      <LogoText>&nbsp;&nbsp;I - Cath</LogoText>
+      <LogoText variant="h6" fontSize={16} fontWeight={700}>
+        &nbsp;&nbsp;iCath
+      </LogoText>
     </ListItem>
   )
 }

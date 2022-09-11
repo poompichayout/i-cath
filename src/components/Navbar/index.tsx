@@ -5,9 +5,11 @@ import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 
+import Breadcrumb from '../Breadcrumb'
 import { DRAWER_WIDTH } from '../contants'
 
 import NavLinks from './NavLinks'
+import { useRouter } from 'next/router'
 
 const MiddleSection = styled(Box)`
   display: flex;
@@ -23,6 +25,7 @@ interface NavBarProps {
 export default function Navbar({ toggleDrawer }: NavBarProps) {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const router = useRouter()
 
   return (
     <AppBar
@@ -37,18 +40,23 @@ export default function Navbar({ toggleDrawer }: NavBarProps) {
     >
       <Toolbar>
         {isMobile && (
-          <IconButton onClick={toggleDrawer}>
-            <MenuIcon sx={{ color: '#2ecc71' }} />
-          </IconButton>
+          <>
+            <IconButton onClick={toggleDrawer}>
+              <MenuIcon sx={{ color: '#2ecc71' }} />
+            </IconButton>
+            <Breadcrumb />
+          </>
         )}
-        <MiddleSection
-          sx={{
-            width: `calc(100% - ${DRAWER_WIDTH}px)`,
-            ml: `${DRAWER_WIDTH}px`,
-          }}
-        >
-          {!isMobile && <NavLinks />}
-        </MiddleSection>
+        {!isMobile && (
+          <MiddleSection
+            sx={{
+              width: `calc(100% - ${DRAWER_WIDTH}px)`,
+              ml: `${DRAWER_WIDTH}px`,
+            }}
+          >
+            <NavLinks />
+          </MiddleSection>
+        )}
       </Toolbar>
     </AppBar>
   )

@@ -23,7 +23,7 @@ const LinksWrapper = styled(List)`
 `
 
 type LinkItemProps = {
-  active: boolean
+  active: boolean | 0 | 1
 }
 
 const LinkItem = styled(ListItem)<LinkItemProps>`
@@ -59,7 +59,7 @@ export default function NavLinks() {
         {NAVBAR.map((e) => (
           <LinkItem
             key={e.path}
-            active={router.pathname === e.path}
+            active={router.pathname.startsWith(e.path) ? 1 : 0}
             sx={{ height: theme.mixins.toolbar }}
           >
             <Link href={e.path}>

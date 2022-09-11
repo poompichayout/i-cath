@@ -27,7 +27,6 @@ const Sidebar = ({ open, onClose }: SidebarProps) => {
       anchor="left"
       open={!isMobile || open}
       variant={isMobile ? 'temporary' : 'permanent'}
-      disablePortal={!isMobile}
       onClose={onClose}
       sx={{
         width: DRAWER_WIDTH,

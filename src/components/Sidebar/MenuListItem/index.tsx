@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 
+import { useTheme } from '@mui/material'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
@@ -11,7 +13,6 @@ import ExpandMore from '@mui/icons-material/ExpandMore'
 import { NAVBAR } from 'src/components/Navbar/constants'
 
 import { StyledLink } from './styled'
-import { useTheme } from '@mui/material'
 
 interface MenuListItemProps {
   route: typeof NAVBAR[0]
@@ -20,6 +21,7 @@ interface MenuListItemProps {
 
 const MenuListItem = ({ route, onClose }: MenuListItemProps) => {
   const theme = useTheme()
+  const router = useRouter()
   const [isSubNavOpen, setSubNavOpen] = useState<boolean>(false)
 
   const handleListItemCollapse = () => {
@@ -32,7 +34,7 @@ const MenuListItem = ({ route, onClose }: MenuListItemProps) => {
         disableRipple
         component={StyledLink}
         button
-        href={route.sub ? '' : route.path}
+        href={route.sub ? router.pathname : route.path}
         onClick={handleListItemCollapse}
       >
         <ListItemText
