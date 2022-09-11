@@ -45,7 +45,7 @@ export const NAVBAR = [
     text: 'Catheterization simulator',
   },
   {
-    path: '/calculator/fick',
+    path: '/calculator',
     text: 'Calculator',
     sub: SUB_CALCULATOR_NAV,
   },

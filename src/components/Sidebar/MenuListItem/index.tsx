@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { useTheme } from '@mui/material'
@@ -24,6 +24,10 @@ const MenuListItem = ({ route, onClose }: MenuListItemProps) => {
   const router = useRouter()
   const [isSubNavOpen, setSubNavOpen] = useState<boolean>(false)
 
+  useEffect(() => {
+    setSubNavOpen(router.pathname.startsWith(route.path))
+  }, [router.pathname, route.path])
+
   const handleListItemCollapse = () => {
     setSubNavOpen((prev) => !prev)
   }
@@ -39,8 +43,11 @@ const MenuListItem = ({ route, onClose }: MenuListItemProps) => {
       >
         <ListItemText
           secondary={route.text}
-          primaryTypographyProps={{
-            color: theme.palette.grey[700],
+          secondaryTypographyProps={{
+            color:
+              router.pathname === route.path
+                ? '#2ecc71'
+                : theme.palette.grey[700],
           }}
         />
         {route.sub ? (
@@ -65,8 +72,11 @@ const MenuListItem = ({ route, onClose }: MenuListItemProps) => {
             >
               <ListItemText
                 secondary={x.text}
-                primaryTypographyProps={{
-                  color: theme.palette.grey[700],
+                secondaryTypographyProps={{
+                  color:
+                    router.pathname === x.path
+                      ? '#2ecc71'
+                      : theme.palette.grey[700],
                 }}
               />
             </ListItem>
