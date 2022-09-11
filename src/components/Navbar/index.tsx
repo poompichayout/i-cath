@@ -28,6 +28,7 @@ export default function Navbar({ toggleDrawer }: NavBarProps) {
     <AppBar
       position="fixed"
       color="default"
+      elevation={1}
       sx={{
         width: `calc(100% - ${DRAWER_WIDTH}px)`,
         ml: `${DRAWER_WIDTH}px`,
@@ -40,7 +41,14 @@ export default function Navbar({ toggleDrawer }: NavBarProps) {
             <MenuIcon sx={{ color: '#2ecc71' }} />
           </IconButton>
         )}
-        <MiddleSection>{!isMobile && <NavLinks />}</MiddleSection>
+        <MiddleSection
+          sx={{
+            width: `calc(100% - ${DRAWER_WIDTH}px)`,
+            ml: `${DRAWER_WIDTH}px`,
+          }}
+        >
+          {!isMobile && <NavLinks />}
+        </MiddleSection>
       </Toolbar>
     </AppBar>
   )

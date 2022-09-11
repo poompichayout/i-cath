@@ -125,13 +125,18 @@ const FickForm = () => {
             <Grid
               item
               xs={7}
+              sm={5}
+              md={6}
+              lg={4}
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result} L/min</Typography>
+              <Typography fontSize={20}>{result}</Typography>
+              <Typography>L/min</Typography>
             </Grid>
           </Grid>
         </Box>
