@@ -8,7 +8,7 @@ import Meta from 'src/components/Meta'
 const FickPage: NextPage = () => {
   return (
     <>
-      <Meta title="Calculator" />
+      <Meta title="Fick - Calculator" />
       <Grid
         container
         spacing={2}

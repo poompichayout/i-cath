@@ -5,15 +5,15 @@ export const SUB_CALCULATOR_NAV = [
   },
   {
     path: '/calculator/ci',
-    text: 'CardiacIndex (CI)',
+    text: 'Cardiac Index (CI)',
   },
   {
     path: '/calculator/svr',
-    text: 'Systemic vascularresistance (SVR)',
+    text: 'Systemic vascular resistance (SVR)',
   },
   {
     path: '/calculator/pvr',
-    text: 'Pulmonary vascularresistance (PVR)',
+    text: 'Pulmonary vascular resistance (PVR)',
   },
   {
     path: '/calculator/papi',
