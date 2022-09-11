@@ -29,7 +29,7 @@ const MainLayout = ({ children }: PropsWithChildren) => {
       <Container maxWidth={false}>
         <Toolbar />
         {children}
-        <Box pb={2} />
+        <Box pb={15} />
       </Container>
     </div>
   )

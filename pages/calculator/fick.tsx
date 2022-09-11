@@ -1,5 +1,6 @@
 import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
+import Image from 'next/image'
 
 import FickForm from 'src/components/Form/Fick'
 import Meta from 'src/components/Meta'
@@ -30,8 +31,49 @@ const FickPage: NextPage = () => {
           </Typography>
 
           <Typography variant="h6">
-            Cardiac Outputcan be calculated as follows:
+            Cardiac Output can be calculated as follows:
           </Typography>
+          <Grid
+            item
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Image
+              src="/images/equation/VO2.svg"
+              width={400}
+              height={100}
+              alt="VO2"
+            />
+            <Image
+              src="/images/equation/CO.svg"
+              width={400}
+              height={75}
+              alt="VO2"
+            />
+          </Grid>
+          <Typography fontWeight={700}>Where</Typography>
+          <Grid item sx={{ ml: 5, lineHeight: 1.5 }}>
+            <Typography>
+              VO
+              <sub>2</sub> = Oxygen consumption
+            </Typography>
+
+            <Typography>
+              C<sub>a</sub> = Arterial oxygen saturation
+            </Typography>
+            <Typography>
+              C<sub>v</sub> = Venous oxygen saturation
+            </Typography>
+            <Typography>CO = Cardiac output</Typography>
+
+            <Typography sx={{ mt: 2 }}>Note: </Typography>
+            <Typography>
+              (C<sub>a</sub> - C<sub>v</sub>) = arteriovenous oxygen difference
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </>
