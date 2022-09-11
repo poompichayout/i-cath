@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import FickForm from 'src/components/Form/Fick'
+import PAPiForm from 'src/components/Form/PAPI'
 import Meta from 'src/components/Meta'
 
 const PAPiPage: NextPage = () => {
@@ -20,7 +20,7 @@ const PAPiPage: NextPage = () => {
             Pulmonary artery pulsatility index (PAPi)
           </Typography>
           <Divider sx={{ mt: 3 }} />
-          <FickForm />
+          <PAPiForm />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">
             Pulmonary artery pulsatility index equation

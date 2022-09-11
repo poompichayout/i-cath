@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
 const CIForm = () => {
-  const [result, setResult] = useState(0)
+  const [result, setResult] = useState<number>(0)
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
 const CINoForm = () => {
-  const [result, setResult] = useState(0)
+  const [result, setResult] = useState<number>(0)
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
@@ -83,7 +83,7 @@ const CINoForm = () => {
               }}
             >
               <Image
-                src="/images/form/ci_yes/BSA.svg"
+                src="/images/form/ci_no/BSA.svg"
                 width={200}
                 height={50}
                 alt="Body surface area (BSA)"
@@ -115,7 +115,7 @@ const CINoForm = () => {
               }}
             >
               <Image
-                src="/images/form/ci_yes/CI.svg"
+                src="/images/form/ci_no/CI.svg"
                 width={200}
                 height={50}
                 alt="Cardiac Index"

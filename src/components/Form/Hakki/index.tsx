@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
-const FickForm = () => {
+const HakkiForm = () => {
   const [result, setResult] = useState<number>(0)
   return (
     <Grid container mt={3}>
@@ -23,85 +23,22 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/ArterialO2Sat.svg"
+                src="/images/form/hakki/CO.svg"
                 width={200}
                 height={50}
-                alt="Arterial O2 Sat"
+                alt="Cardiac Output"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="Arterial O2 Sat"
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
-                  ),
-                }}
-                sx={{ borderBlockColor: 'red' }}
-              />
-            </Grid>
-          </Grid>
-
-          <Grid container spacing={2} mt={2}>
-            <Grid
-              item
-              xs={5}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Image
-                src="/images/form/fick/VenousO2Sat.svg"
-                width={200}
-                height={50}
-                alt="Venous O2 Sat"
-              />
-            </Grid>
-            <Grid item xs={7}>
-              <TextField
-                id="outlined-basic"
-                label="Venous O2 Sat"
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
-                  ),
-                }}
-                sx={{ borderBlockColor: 'red' }}
-              />
-            </Grid>
-          </Grid>
-
-          <Grid container spacing={2} mt={2}>
-            <Grid
-              item
-              xs={5}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Image
-                src="/images/form/fick/O2Consumption.svg"
-                width={200}
-                height={50}
-                alt="O2 Consumption"
-              />
-            </Grid>
-            <Grid item xs={7}>
-              <TextField
-                id="outlined-basic"
-                label="O2 Consumption"
+                label="Cardiac Output"
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -116,10 +53,40 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/CO.svg"
-                width={200}
+                src="/images/form/hakki/MeanPressureGradient.svg"
+                width={250}
                 height={50}
-                alt="O2 Consumption"
+                alt="Mean pressure gradient"
+              />
+            </Grid>
+            <Grid item xs={7}>
+              <TextField
+                id="outlined-basic"
+                label="Mean pressure gradient"
+                variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">mmHg</InputAdornment>
+                  ),
+                }}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={2} mt={2}>
+            <Grid
+              item
+              xs={5}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <Image
+                src="/images/form/hakki/ValveArea.svg"
+                width={100}
+                height={50}
+                alt="Valve Area"
               />
             </Grid>
             <Grid
@@ -136,7 +103,9 @@ const FickForm = () => {
               }}
             >
               <Typography fontSize={20}>{result}</Typography>
-              <Typography>L/min</Typography>
+              <Typography>
+                cm<sup>2</sup>
+              </Typography>
             </Grid>
           </Grid>
         </Box>
@@ -145,4 +114,4 @@ const FickForm = () => {
   )
 }
 
-export default FickForm
+export default HakkiForm

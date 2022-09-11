@@ -6,8 +6,12 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
+import { useMediaQuery, useTheme } from '@mui/material'
 
-const FickForm = () => {
+const PAPiForm = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   const [result, setResult] = useState<number>(0)
   return (
     <Grid container mt={3}>
@@ -23,23 +27,27 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/ArterialO2Sat.svg"
-                width={200}
+                src="/images/form/papi/PASP.svg"
+                width={300}
                 height={50}
-                alt="Arterial O2 Sat"
+                alt="Pulmonary artery systolic pressure (PASP)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="Arterial O2 Sat"
+                fullWidth
+                label={
+                  isMobile
+                    ? 'PASP'
+                    : 'Pulmonary artery systolic pressure (PASP)'
+                }
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
+                    <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -54,23 +62,27 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/VenousO2Sat.svg"
-                width={200}
+                src="/images/form/papi/PADP.svg"
+                width={300}
                 height={50}
-                alt="Venous O2 Sat"
+                alt="Pulmonary artery diastolic pressure (PADP)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="Venous O2 Sat"
+                fullWidth
+                label={
+                  isMobile
+                    ? 'PADP'
+                    : 'Pulmonary artery diastolic pressure (PADP)'
+                }
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
+                    <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -85,23 +97,23 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/O2Consumption.svg"
-                width={200}
+                src="/images/form/papi/RAP.svg"
+                width={300}
                 height={50}
-                alt="O2 Consumption"
+                alt="Right atrial pressure (RAP)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="O2 Consumption"
+                fullWidth
+                label={isMobile ? 'RAP' : 'Right atrial pressure (RAP)'}
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">L/min</InputAdornment>
+                    <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -116,27 +128,23 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/CO.svg"
-                width={200}
+                src="/images/form/papi/PAPi.svg"
+                width={300}
                 height={50}
-                alt="O2 Consumption"
+                alt="Pulmonary artery pulsatility index (PAPi)"
               />
             </Grid>
             <Grid
               item
               xs={7}
-              sm={5}
-              md={6}
-              lg={4}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'left',
               }}
             >
               <Typography fontSize={20}>{result}</Typography>
-              <Typography>L/min</Typography>
             </Grid>
           </Grid>
         </Box>
@@ -145,4 +153,4 @@ const FickForm = () => {
   )
 }
 
-export default FickForm
+export default PAPiForm

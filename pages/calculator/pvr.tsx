@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import FickForm from 'src/components/Form/Fick'
+import PVRForm from 'src/components/Form/PVR'
 import Meta from 'src/components/Meta'
 
 const PVRPage: NextPage = () => {
@@ -20,7 +20,7 @@ const PVRPage: NextPage = () => {
             Pulmonary vascular resistance (PVR)
           </Typography>
           <Divider sx={{ mt: 3 }} />
-          <FickForm />
+          <PVRForm />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">
             Pulmonary vascular resistance equation

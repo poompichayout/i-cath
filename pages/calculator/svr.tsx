@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import FickForm from 'src/components/Form/Fick'
+import SVRForm from 'src/components/Form/SVR'
 import Meta from 'src/components/Meta'
 
 const SVRPage: NextPage = () => {
@@ -20,7 +20,7 @@ const SVRPage: NextPage = () => {
             Systemic vascular resistance (SVR)
           </Typography>
           <Divider sx={{ mt: 3 }} />
-          <FickForm />
+          <SVRForm />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">
             Systemic vascular resistance equation

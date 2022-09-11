@@ -6,8 +6,12 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
+import { useMediaQuery, useTheme } from '@mui/material'
 
-const FickForm = () => {
+const SVRForm = () => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   const [result, setResult] = useState<number>(0)
   return (
     <Grid container mt={3}>
@@ -23,23 +27,23 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/ArterialO2Sat.svg"
-                width={200}
+                src="/images/form/svr/MAP.svg"
+                width={300}
                 height={50}
-                alt="Arterial O2 Sat"
+                alt="Mean Arterial Pressure (MAP)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="Arterial O2 Sat"
+                fullWidth
+                label={isMobile ? 'MAP' : 'Mean Arterial Pressure (MAP)'}
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
+                    <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -54,23 +58,23 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/VenousO2Sat.svg"
-                width={200}
+                src="/images/form/svr/RAP.svg"
+                width={300}
                 height={50}
-                alt="Venous O2 Sat"
+                alt="Right Arterial Pressure (RAP)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="Venous O2 Sat"
+                fullWidth
+                label={isMobile ? 'RAP' : 'Right Arterial Pressure (RAP)'}
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">%</InputAdornment>
+                    <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -85,23 +89,23 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/O2Consumption.svg"
+                src="/images/form/svr/CO.svg"
                 width={200}
                 height={50}
-                alt="O2 Consumption"
+                alt="Cardiac Output (CO)"
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 id="outlined-basic"
-                label="O2 Consumption"
+                fullWidth
+                label="Cardiac Output (CO)"
                 variant="outlined"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
               />
             </Grid>
           </Grid>
@@ -116,18 +120,15 @@ const FickForm = () => {
               }}
             >
               <Image
-                src="/images/form/fick/CO.svg"
-                width={200}
+                src="/images/form/svr/SVR.svg"
+                width={300}
                 height={50}
-                alt="O2 Consumption"
+                alt="Systemic vascular resistance (SVR)"
               />
             </Grid>
             <Grid
               item
               xs={7}
-              sm={5}
-              md={6}
-              lg={4}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -136,7 +137,9 @@ const FickForm = () => {
               }}
             >
               <Typography fontSize={20}>{result}</Typography>
-              <Typography>L/min</Typography>
+              <Typography>
+                dyn/s/cm<sup>-5</sup>
+              </Typography>
             </Grid>
           </Grid>
         </Box>
@@ -145,4 +148,4 @@ const FickForm = () => {
   )
 }
 
-export default FickForm
+export default SVRForm

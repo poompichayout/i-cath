@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import FickForm from 'src/components/Form/Fick'
+import HakkiForm from 'src/components/Form/Hakki'
 import Meta from 'src/components/Meta'
 
 const HakkiPage: NextPage = () => {
@@ -18,7 +18,7 @@ const HakkiPage: NextPage = () => {
         <Grid item xs={12} sm={10} lg={8}>
           <Typography variant="h3">The Hakki equation</Typography>
           <Divider sx={{ mt: 3 }} />
-          <FickForm />
+          <HakkiForm />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">Hakki equation</Typography>
           <Typography my={3} align="justify">
