@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -7,12 +8,30 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import { getAVA } from 'src/utils'
+
+type FormValues = {
+  cardiacOutput: number
+  meanPressureGradient: number
+}
+
 const HakkiForm = () => {
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({ cardiacOutput, meanPressureGradient }: FormValues) => {
+    const ava = getAVA(cardiacOutput, meanPressureGradient)
+    if (!Number.isNaN(ava)) {
+      setResult(ava)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -31,7 +50,8 @@ const HakkiForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="cardiacOutput"
+                type="number"
                 label="Cardiac Output"
                 variant="outlined"
                 InputProps={{
@@ -39,6 +59,7 @@ const HakkiForm = () => {
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
+                {...register('cardiacOutput')}
               />
             </Grid>
           </Grid>
@@ -61,7 +82,8 @@ const HakkiForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="meanPressureGradient"
+                type="number"
                 label="Mean pressure gradient"
                 variant="outlined"
                 InputProps={{
@@ -69,6 +91,7 @@ const HakkiForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('meanPressureGradient')}
               />
             </Grid>
           </Grid>
@@ -102,7 +125,7 @@ const HakkiForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 cm<sup>2</sup>
               </Typography>

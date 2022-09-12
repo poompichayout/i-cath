@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -7,12 +8,30 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import { getCIKnownCO } from 'src/utils'
+
+type FormValues = {
+  cardiacOutput: number
+  bodySurfaceArea: number
+}
+
 const CIForm = () => {
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({ cardiacOutput, bodySurfaceArea }: FormValues) => {
+    const ci = getCIKnownCO(cardiacOutput, bodySurfaceArea)
+    if (!Number.isNaN(ci)) {
+      setResult(ci)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -31,7 +50,8 @@ const CIForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="cardiacOutput"
+                type="number"
                 label="Cardiac Output"
                 variant="outlined"
                 InputProps={{
@@ -39,7 +59,7 @@ const CIForm = () => {
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
+                {...register('cardiacOutput')}
               />
             </Grid>
           </Grid>
@@ -62,7 +82,8 @@ const CIForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="bodySurfaceArea"
+                type="number"
                 label="Body surface area"
                 variant="outlined"
                 InputProps={{
@@ -72,7 +93,7 @@ const CIForm = () => {
                     </InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
+                {...register('bodySurfaceArea')}
               />
             </Grid>
           </Grid>
@@ -106,7 +127,7 @@ const CIForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 L/min/m<sup>2</sup>
               </Typography>

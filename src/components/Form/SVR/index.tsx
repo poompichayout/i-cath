@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -8,15 +9,42 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
+import { getSVR } from 'src/utils'
+
+type FormValues = {
+  meanArterialPressure: number
+  rightArterialPressure: number
+  cardiacOutput: number
+}
+
 const SVRForm = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    meanArterialPressure,
+    rightArterialPressure,
+    cardiacOutput,
+  }: FormValues) => {
+    const svr = getSVR(
+      meanArterialPressure,
+      rightArterialPressure,
+      cardiacOutput
+    )
+    if (!Number.isNaN(svr)) {
+      setResult(svr)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -35,7 +63,8 @@ const SVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="meanArterialPressure"
+                type="number"
                 fullWidth
                 label={isMobile ? 'MAP' : 'Mean Arterial Pressure (MAP)'}
                 variant="outlined"
@@ -44,6 +73,7 @@ const SVRForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('meanArterialPressure')}
               />
             </Grid>
           </Grid>
@@ -66,7 +96,8 @@ const SVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="rightArterialPressure"
+                type="number"
                 fullWidth
                 label={isMobile ? 'RAP' : 'Right Arterial Pressure (RAP)'}
                 variant="outlined"
@@ -75,6 +106,7 @@ const SVRForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('rightArterialPressure')}
               />
             </Grid>
           </Grid>
@@ -97,7 +129,8 @@ const SVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="cardiacOutput"
+                type="number"
                 fullWidth
                 label="Cardiac Output (CO)"
                 variant="outlined"
@@ -106,6 +139,7 @@ const SVRForm = () => {
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
+                {...register('cardiacOutput')}
               />
             </Grid>
           </Grid>
@@ -136,7 +170,7 @@ const SVRForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 dyn/s/cm<sup>-5</sup>
               </Typography>

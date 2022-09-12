@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -8,15 +9,42 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
+import { getPVR } from 'src/utils'
+
+type FormValues = {
+  meanPulmonaryArterialPressure: number
+  pulmonaryCapillaryWedgePressure: number
+  cardiacOutput: number
+}
+
 const PVRForm = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    meanPulmonaryArterialPressure,
+    pulmonaryCapillaryWedgePressure,
+    cardiacOutput,
+  }: FormValues) => {
+    const pvr = getPVR(
+      meanPulmonaryArterialPressure,
+      pulmonaryCapillaryWedgePressure,
+      cardiacOutput
+    )
+    if (!Number.isNaN(pvr)) {
+      setResult(pvr)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -35,7 +63,8 @@ const PVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="meanPulmonaryArterialPressure"
+                type="number"
                 fullWidth
                 label={
                   isMobile ? 'mPAP' : 'Mean pulmonary arterial pressure (mPAP)'
@@ -46,6 +75,7 @@ const PVRForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('meanPulmonaryArterialPressure')}
               />
             </Grid>
           </Grid>
@@ -68,7 +98,8 @@ const PVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="pulmonaryCapillaryWedgePressure"
+                type="number"
                 fullWidth
                 label={
                   isMobile
@@ -81,6 +112,7 @@ const PVRForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('pulmonaryCapillaryWedgePressure')}
               />
             </Grid>
           </Grid>
@@ -103,7 +135,8 @@ const PVRForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="cardiacOutput"
+                type="number"
                 fullWidth
                 label="Cardiac Output (CO)"
                 variant="outlined"
@@ -112,6 +145,7 @@ const PVRForm = () => {
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
+                {...register('cardiacOutput')}
               />
             </Grid>
           </Grid>
@@ -142,7 +176,7 @@ const PVRForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 dyn&#12539;s/cm<sup>-5</sup>
               </Typography>

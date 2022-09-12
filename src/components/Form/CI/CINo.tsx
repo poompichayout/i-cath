@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -7,12 +8,35 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import { getCIUnknownCO } from 'src/utils'
+
+type FormValues = {
+  strokeVolume: number
+  hearthRate: number
+  bodySurfaceArea: number
+}
+
 const CINoForm = () => {
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    strokeVolume,
+    hearthRate,
+    bodySurfaceArea,
+  }: FormValues) => {
+    const ci = getCIUnknownCO(strokeVolume, hearthRate, bodySurfaceArea)
+    if (!Number.isNaN(ci)) {
+      setResult(ci)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -31,7 +55,8 @@ const CINoForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="strokeVolume"
+                type="number"
                 label="Stroke Volume"
                 variant="outlined"
                 InputProps={{
@@ -39,6 +64,7 @@ const CINoForm = () => {
                     <InputAdornment position="end">mL/beat</InputAdornment>
                   ),
                 }}
+                {...register('strokeVolume')}
               />
             </Grid>
           </Grid>
@@ -61,7 +87,8 @@ const CINoForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="hearthRate"
+                type="number"
                 label="Heart Rate"
                 variant="outlined"
                 InputProps={{
@@ -69,6 +96,7 @@ const CINoForm = () => {
                     <InputAdornment position="end">beats/min</InputAdornment>
                   ),
                 }}
+                {...register('hearthRate')}
               />
             </Grid>
           </Grid>
@@ -91,7 +119,8 @@ const CINoForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="bodySurfaceArea"
+                type="number"
                 label="Body surface area"
                 variant="outlined"
                 InputProps={{
@@ -101,6 +130,7 @@ const CINoForm = () => {
                     </InputAdornment>
                   ),
                 }}
+                {...register('bodySurfaceArea')}
               />
             </Grid>
           </Grid>
@@ -134,7 +164,7 @@ const CINoForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 L/min/m<sup>2</sup>
               </Typography>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -8,15 +9,42 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
+import { getPAPi } from 'src/utils'
+
+type FormValues = {
+  pulmonaryArterySystolicPressure: number
+  pulmonaryArteryDiastolicPressure: number
+  rightAtrialPressure: number
+}
+
 const PAPiForm = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    pulmonaryArterySystolicPressure,
+    pulmonaryArteryDiastolicPressure,
+    rightAtrialPressure,
+  }: FormValues) => {
+    const papi = getPAPi(
+      pulmonaryArterySystolicPressure,
+      pulmonaryArteryDiastolicPressure,
+      rightAtrialPressure
+    )
+    if (!Number.isNaN(papi)) {
+      setResult(papi)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -35,7 +63,8 @@ const PAPiForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="pulmonaryArterySystolicPressure"
+                type="number"
                 fullWidth
                 label={
                   isMobile
@@ -48,6 +77,7 @@ const PAPiForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('pulmonaryArterySystolicPressure')}
               />
             </Grid>
           </Grid>
@@ -70,7 +100,8 @@ const PAPiForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="pulmonaryArteryDiastolicPressure"
+                type="number"
                 fullWidth
                 label={
                   isMobile
@@ -83,6 +114,7 @@ const PAPiForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('pulmonaryArteryDiastolicPressure')}
               />
             </Grid>
           </Grid>
@@ -105,7 +137,8 @@ const PAPiForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="rightAtrialPressure"
+                type="number"
                 fullWidth
                 label={isMobile ? 'RAP' : 'Right atrial pressure (RAP)'}
                 variant="outlined"
@@ -114,6 +147,7 @@ const PAPiForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('rightAtrialPressure')}
               />
             </Grid>
           </Grid>
@@ -144,7 +178,7 @@ const PAPiForm = () => {
                 justifyContent: 'left',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
             </Grid>
           </Grid>
         </Box>

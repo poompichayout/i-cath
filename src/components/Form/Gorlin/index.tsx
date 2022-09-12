@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -8,15 +9,45 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
+import { getGorlinArea } from 'src/utils'
+
+type FormValues = {
+  flow: number
+  orificeContraction: number
+  velocityLossCoefficient: number
+  pressureGradient: number
+}
+
 const GorlinForm = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    flow,
+    orificeContraction,
+    velocityLossCoefficient,
+    pressureGradient,
+  }: FormValues) => {
+    const area = getGorlinArea(
+      flow,
+      orificeContraction,
+      velocityLossCoefficient,
+      pressureGradient
+    )
+    if (!Number.isNaN(area)) {
+      setResult(area)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -35,7 +66,8 @@ const GorlinForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="flow"
+                type="number"
                 fullWidth
                 label="Flow(F)"
                 variant="outlined"
@@ -46,6 +78,7 @@ const GorlinForm = () => {
                     </InputAdornment>
                   ),
                 }}
+                {...register('flow')}
               />
             </Grid>
           </Grid>
@@ -68,14 +101,16 @@ const GorlinForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="orificeContraction"
+                type="number"
                 fullWidth
+                variant="outlined"
                 label={
                   <Typography>
                     Orifice contraction (C<sub>c</sub>)
                   </Typography>
                 }
-                variant="outlined"
+                {...register('orificeContraction')}
               />
             </Grid>
           </Grid>
@@ -98,14 +133,16 @@ const GorlinForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="velocityLossCoefficient"
+                type="number"
                 fullWidth
+                variant="outlined"
                 label={
                   <Typography>
                     Velocity loss coefficient (C<sub>v</sub>)
                   </Typography>
                 }
-                variant="outlined"
+                {...register('velocityLossCoefficient')}
               />
             </Grid>
           </Grid>
@@ -127,7 +164,8 @@ const GorlinForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
+                id="pressureGradient"
+                type="number"
                 fullWidth
                 label="Pressure gradient (h)"
                 variant="outlined"
@@ -136,6 +174,7 @@ const GorlinForm = () => {
                     <InputAdornment position="end">mmHg</InputAdornment>
                   ),
                 }}
+                {...register('pressureGradient')}
               />
             </Grid>
           </Grid>
@@ -166,7 +205,7 @@ const GorlinForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>
                 cm<sup>2</sup>
               </Typography>
