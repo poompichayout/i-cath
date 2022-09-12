@@ -1,6 +1,9 @@
-import { Divider, Grid, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Image from 'next/image'
+
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
 import FickForm from 'src/components/Form/Fick'
 import Meta from 'src/components/Meta'

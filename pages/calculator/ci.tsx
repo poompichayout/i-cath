@@ -2,7 +2,12 @@ import { useState } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 
-import { Box, Divider, Grid, Stack, Switch, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import Switch from '@mui/material/Switch'
+import Typography from '@mui/material/Typography'
 
 import CIForm from 'src/components/Form/CI'
 import CINoForm from 'src/components/Form/CI/CINo'

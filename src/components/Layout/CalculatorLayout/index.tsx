@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useState } from 'react'
 
-import { Grid, useMediaQuery, useTheme } from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
+import Grid from '@mui/material/Grid'
 
 import Navbar from 'src/components/Navbar'
 import Sidebar from 'src/components/Sidebar'

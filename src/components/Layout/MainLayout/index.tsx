@@ -1,13 +1,9 @@
 import React, { PropsWithChildren, useState } from 'react'
 
-import {
-  Box,
-  Container,
-  Grid,
-  Toolbar,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Toolbar from '@mui/material/Toolbar'
 
 import Navbar from 'src/components/Navbar'
 import Sidebar from 'src/components/Sidebar'

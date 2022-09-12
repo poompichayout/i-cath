@@ -1,6 +1,8 @@
-import { Divider, Grid } from '@mui/material'
-import Typography from '@mui/material/Typography'
 import type { NextPage } from 'next'
+
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 
 import Meta from 'src/components/Meta'
 import NormalHemodynamicTable from 'src/components/Table/NormalHemodynamic'

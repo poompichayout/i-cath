@@ -2,7 +2,11 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 import styled from '@emotion/styled'
-import { List, ListItem, Box, Typography, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 import PlainLink from 'src/Link'
 

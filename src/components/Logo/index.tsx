@@ -2,7 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 
 import styled from '@emotion/styled'
-import { Box, ListItem, Typography, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
+
+import Box from '@mui/material/Box'
+import ListItem from '@mui/material/ListItem'
+import Typography from '@mui/material/Typography'
 
 import PlainLink from 'src/Link'
 
