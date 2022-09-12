@@ -63,13 +63,13 @@ const GorlinPage: NextPage = () => {
               C<sub>c</sub> = Orifice contraction
             </Typography>
             <Typography>
-              C<sub>v</sub> = Velocity losscoefficient
+              C<sub>v</sub> = Velocity loss coefficient
             </Typography>
             <Typography>g = Gravitational constant</Typography>
             <Typography>h = Pressure gradient</Typography>
           </Grid>
           <Typography sx={{ mt: 2 }}>Note: </Typography>
-          <Typography>F = CO/SEP x HR</Typography>
+          <Typography>F = CO / SEP x HR</Typography>
           <Typography>g = 980 cm/s</Typography>
         </Grid>
       </Grid>

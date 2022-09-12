@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import type { NextPage } from 'next'
 
 import Meta from 'src/components/Meta'
-import CardiacPressureTable from 'src/components/CardiacPressureTable'
+import CardiacPressureTable from 'src/components/Table/CardiacPressure'
 
 const CardiacPressurePage: NextPage = () => {
   return (

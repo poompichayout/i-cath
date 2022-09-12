@@ -3,8 +3,8 @@ import Typography from '@mui/material/Typography'
 import type { NextPage } from 'next'
 
 import Meta from 'src/components/Meta'
-import CardiacPressureTable from 'src/components/CardiacPressureTable'
-import NormalHemodynamicTable from 'src/components/NormalHemodynamicTable'
+import CardiacPressureTable from 'src/components/Table/CardiacPressure'
+import NormalHemodynamicTable from 'src/components/Table/NormalHemodynamic'
 
 const NormalValuesPage: NextPage = () => {
   return (

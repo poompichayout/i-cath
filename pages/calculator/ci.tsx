@@ -65,7 +65,7 @@ const CIPage: NextPage = () => {
           </Grid>
           <Typography fontWeight={700}>Where</Typography>
           <Grid item sx={{ ml: 5, lineHeight: 1.5 }}>
-            <Typography>CI = Cardia index</Typography>
+            <Typography>CI = Cardiac index</Typography>
             <Typography>CO = Cardiac Output</Typography>
             <Typography>SV = Stroke volume</Typography>
             <Typography>HR = Heart Rate</Typography>

@@ -70,7 +70,11 @@ const GorlinForm = () => {
               <TextField
                 id="outlined-basic"
                 fullWidth
-                label="Orifice contraction (Cc)"
+                label={
+                  <Typography>
+                    Orifice contraction (C<sub>c</sub>)
+                  </Typography>
+                }
                 variant="outlined"
               />
             </Grid>
@@ -96,7 +100,11 @@ const GorlinForm = () => {
               <TextField
                 id="outlined-basic"
                 fullWidth
-                label="Velocity loss coefficient (Cv)"
+                label={
+                  <Typography>
+                    Velocity loss coefficient (C<sub>v</sub>)
+                  </Typography>
+                }
                 variant="outlined"
               />
             </Grid>

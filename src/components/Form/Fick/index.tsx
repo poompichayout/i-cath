@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
@@ -7,12 +8,39 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
+import { getCO } from 'src/utils'
+
+type FormValues = {
+  oxygenConsumption: number
+  arterialOxygenSaturation: number
+  venousOxygenSaturation: number
+}
+
 const FickForm = () => {
   const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = ({
+    oxygenConsumption,
+    arterialOxygenSaturation,
+    venousOxygenSaturation,
+  }: FormValues) => {
+    const co = getCO(
+      oxygenConsumption,
+      arterialOxygenSaturation,
+      venousOxygenSaturation
+    )
+    if (!Number.isNaN(co)) {
+      setResult(co)
+    } else {
+      setResult(0)
+    }
+  }
+
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
-        <Box component="form">
+        <Box component="form" onChange={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid
               item
@@ -31,15 +59,20 @@ const FickForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
-                label="Arterial O2 Sat"
+                id="oxygenConsumption"
+                type="number"
                 variant="outlined"
+                label={
+                  <Typography>
+                    Arterial O<sub>2</sub> Sat
+                  </Typography>
+                }
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">%</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
+                {...register('oxygenConsumption')}
               />
             </Grid>
           </Grid>
@@ -62,15 +95,20 @@ const FickForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
-                label="Venous O2 Sat"
+                id="arterialOxygenSaturation"
+                type="number"
                 variant="outlined"
+                label={
+                  <Typography>
+                    Venous O<sub>2</sub> Sat
+                  </Typography>
+                }
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">%</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
+                {...register('arterialOxygenSaturation')}
               />
             </Grid>
           </Grid>
@@ -93,15 +131,20 @@ const FickForm = () => {
             </Grid>
             <Grid item xs={7}>
               <TextField
-                id="outlined-basic"
-                label="O2 Consumption"
+                id="venousOxygenSaturation"
+                type="number"
                 variant="outlined"
+                label={
+                  <Typography>
+                    O<sub>2</sub> Consumption
+                  </Typography>
+                }
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
                   ),
                 }}
-                sx={{ borderBlockColor: 'red' }}
+                {...register('venousOxygenSaturation')}
               />
             </Grid>
           </Grid>
@@ -135,7 +178,7 @@ const FickForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result}</Typography>
+              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
               <Typography>L/min</Typography>
             </Grid>
           </Grid>
