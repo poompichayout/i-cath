@@ -42,7 +42,7 @@ const CIForm = () => {
               }}
             >
               <Image
-                src="/images/form/CI_yes/CO.svg"
+                src="/images/form/ci_yes/CO.svg"
                 width={200}
                 height={50}
                 alt="Cardiac Output"
