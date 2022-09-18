@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
-import { getPVR } from 'src/utils'
+import { getPVR, NumberFormat } from 'src/utils'
 
 type FormValues = {
   meanPulmonaryArterialPressure: number
@@ -176,7 +176,9 @@ const PVRForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>
                 dyn&#12539;s/cm<sup>-5</sup>
               </Typography>

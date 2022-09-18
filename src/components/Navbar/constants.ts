@@ -1,6 +1,6 @@
 export const SUB_CALCULATOR_NAV = [
   {
-    path: '/calculator/fick',
+    path: '/calculator/co',
     text: 'Cardiac Output - Fick',
   },
   {

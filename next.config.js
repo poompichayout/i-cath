@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: '/calculator',
-        destination: '/calculator/fick',
+        destination: '/calculator/co',
         permanent: true,
       },
     ]

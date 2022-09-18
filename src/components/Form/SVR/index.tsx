@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
-import { getSVR } from 'src/utils'
+import { getSVR, NumberFormat } from 'src/utils'
 
 type FormValues = {
   meanArterialPressure: number
@@ -170,7 +170,9 @@ const SVRForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>
                 dyn/s/cm<sup>-5</sup>
               </Typography>

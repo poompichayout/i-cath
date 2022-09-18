@@ -8,16 +8,17 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
-import { getCIKnownCO } from 'src/utils'
+import { getCIKnownCO, NumberFormat } from 'src/utils'
+import BSAForm from './BSAForm'
 
-type FormValues = {
+export type FormValues = {
   cardiacOutput: number
   bodySurfaceArea: number
 }
 
 const CIForm = () => {
   const [result, setResult] = useState<number>(0)
-  const { register, handleSubmit } = useForm<FormValues>()
+  const { register, handleSubmit, setValue } = useForm<FormValues>()
 
   const onSubmit = ({ cardiacOutput, bodySurfaceArea }: FormValues) => {
     const ci = getCIKnownCO(cardiacOutput, bodySurfaceArea)
@@ -54,6 +55,7 @@ const CIForm = () => {
                 type="number"
                 label="Cardiac Output"
                 variant="outlined"
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
@@ -64,39 +66,10 @@ const CIForm = () => {
             </Grid>
           </Grid>
 
-          <Grid container spacing={2} mt={2}>
-            <Grid
-              item
-              xs={5}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Image
-                src="/images/form/ci_yes/BSA.svg"
-                width={200}
-                height={50}
-                alt="Body surface area (BSA)"
-              />
-            </Grid>
-            <Grid item xs={7}>
-              <TextField
-                id="bodySurfaceArea"
-                type="number"
-                label="Body surface area"
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      m<sup>2</sup>
-                    </InputAdornment>
-                  ),
-                }}
-                {...register('bodySurfaceArea')}
-              />
-            </Grid>
-          </Grid>
+          <BSAForm
+            register={register}
+            setValue={setValue}
+          />
 
           <Grid container spacing={2} mt={2}>
             <Grid
@@ -117,9 +90,6 @@ const CIForm = () => {
             <Grid
               item
               xs={7}
-              sm={5}
-              md={6}
-              lg={4}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -127,7 +97,9 @@ const CIForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>
                 L/min/m<sup>2</sup>
               </Typography>

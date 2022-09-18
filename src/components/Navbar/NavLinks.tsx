@@ -66,7 +66,7 @@ export default function NavLinks() {
             active={router.pathname.startsWith(e.path) ? 1 : 0}
             sx={{ height: theme.mixins.toolbar }}
           >
-            <Link href={e.path}>
+            <Link href={e.path === '/calculator' ? '/calculator/co' : e.path}>
               <Typography noWrap fontWeight={500}>
                 {e.text}
               </Typography>

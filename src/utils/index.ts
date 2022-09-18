@@ -49,3 +49,7 @@ export const getGorlinArea = (
 
 export const getAVA = (cardiacOutput: number, meanPressureGradient: number) =>
   cardiacOutput / Math.sqrt(meanPressureGradient)
+
+export const NumberFormat = new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 2,
+})

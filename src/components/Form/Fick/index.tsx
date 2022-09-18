@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
-import { getCO } from 'src/utils'
+import { getCO, NumberFormat } from 'src/utils'
 
 type FormValues = {
   oxygenConsumption: number
@@ -67,6 +67,7 @@ const FickForm = () => {
                     Arterial O<sub>2</sub> Sat
                   </Typography>
                 }
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">%</InputAdornment>
@@ -103,6 +104,7 @@ const FickForm = () => {
                     Venous O<sub>2</sub> Sat
                   </Typography>
                 }
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">%</InputAdornment>
@@ -139,6 +141,7 @@ const FickForm = () => {
                     O<sub>2</sub> Consumption
                   </Typography>
                 }
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
@@ -168,9 +171,6 @@ const FickForm = () => {
             <Grid
               item
               xs={7}
-              sm={5}
-              md={6}
-              lg={4}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -178,7 +178,9 @@ const FickForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>L/min</Typography>
             </Grid>
           </Grid>

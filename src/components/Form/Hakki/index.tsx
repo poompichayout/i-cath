@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
-import { getAVA } from 'src/utils'
+import { getAVA, NumberFormat } from 'src/utils'
 
 type FormValues = {
   cardiacOutput: number
@@ -54,6 +54,7 @@ const HakkiForm = () => {
                 type="number"
                 label="Cardiac Output"
                 variant="outlined"
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">L/min</InputAdornment>
@@ -86,6 +87,7 @@ const HakkiForm = () => {
                 type="number"
                 label="Mean pressure gradient"
                 variant="outlined"
+                fullWidth
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">mmHg</InputAdornment>
@@ -115,9 +117,6 @@ const HakkiForm = () => {
             <Grid
               item
               xs={7}
-              sm={5}
-              md={6}
-              lg={4}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -125,7 +124,9 @@ const HakkiForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>
                 cm<sup>2</sup>
               </Typography>

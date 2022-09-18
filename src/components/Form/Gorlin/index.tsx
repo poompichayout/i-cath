@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
-import { getGorlinArea } from 'src/utils'
+import { getGorlinArea, NumberFormat } from 'src/utils'
 
 type FormValues = {
   flow: number
@@ -59,7 +59,7 @@ const GorlinForm = () => {
             >
               <Image
                 src="/images/form/gorlin/F.svg"
-                width={125}
+                width={100}
                 height={50}
                 alt="Flow(F)"
               />
@@ -94,7 +94,7 @@ const GorlinForm = () => {
             >
               <Image
                 src="/images/form/gorlin/Cc.svg"
-                width={300}
+                width={200}
                 height={50}
                 alt="Orifice contraction (Cc)"
               />
@@ -126,7 +126,7 @@ const GorlinForm = () => {
             >
               <Image
                 src="/images/form/gorlin/Cv.svg"
-                width={300}
+                width={225}
                 height={50}
                 alt="Velocity loss coefficient (Cv)"
               />
@@ -157,7 +157,7 @@ const GorlinForm = () => {
             >
               <Image
                 src="/images/form/gorlin/H.svg"
-                width={300}
+                width={200}
                 height={50}
                 alt="Pressure gradient (h)"
               />
@@ -190,7 +190,7 @@ const GorlinForm = () => {
             >
               <Image
                 src="/images/form/gorlin/Area.svg"
-                width={70}
+                width={50}
                 height={50}
                 alt="Area"
               />
@@ -205,7 +205,9 @@ const GorlinForm = () => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
               <Typography>
                 cm<sup>2</sup>
               </Typography>

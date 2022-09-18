@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography'
 import FickForm from 'src/components/Form/Fick'
 import Meta from 'src/components/Meta'
 
-const FickPage: NextPage = () => {
+const COPage: NextPage = () => {
   return (
     <>
-      <Meta title="Fick - Calculator" />
+      <Meta title="CO - Calculator" />
       <Grid
         container
         spacing={2}
@@ -83,4 +83,4 @@ const FickPage: NextPage = () => {
   )
 }
 
-export default FickPage
+export default COPage

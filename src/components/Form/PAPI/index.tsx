@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 import { useMediaQuery, useTheme } from '@mui/material'
 
-import { getPAPi } from 'src/utils'
+import { getPAPi, NumberFormat } from 'src/utils'
 
 type FormValues = {
   pulmonaryArterySystolicPressure: number
@@ -178,7 +178,9 @@ const PAPiForm = () => {
                 justifyContent: 'left',
               }}
             >
-              <Typography fontSize={20}>{result.toFixed(2)}</Typography>
+              <Typography fontSize={20}>
+                {NumberFormat.format(result)}
+              </Typography>
             </Grid>
           </Grid>
         </Box>
