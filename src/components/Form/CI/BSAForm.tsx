@@ -124,7 +124,7 @@ const BSAForm = ({ register, setValue }: BSAProps2) => {
                   alignItems: 'center',
                 }}
               >
-                <Typography>Width</Typography>
+                <Typography>Weight</Typography>
               </Grid>
               <Grid item xs={7}>
                 <TextField
