@@ -3,10 +3,10 @@ import { CSSProperties, MouseEventHandler, SVGProps, useRef } from 'react'
 const PATH_STYLE: CSSProperties = { transition: '0.3s' }
 
 export default function Heart(props: SVGProps<SVGSVGElement>) {
-  const rightAtriumRef = useRef<SVGPathElement>()
-  const rightVentricleRef = useRef<SVGPathElement>()
-  const pulmonaryArteryRef = useRef<SVGPathElement>()
-  const lungBedRef = useRef<SVGPathElement>()
+  const rightAtriumRef = useRef<SVGPathElement>(null)
+  const rightVentricleRef = useRef<SVGPathElement>(null)
+  const pulmonaryArteryRef = useRef<SVGPathElement>(null)
+  const lungBedRef = useRef<SVGPathElement>(null)
 
   const onMouseOver: MouseEventHandler<SVGImageElement> = (e) => {
     const ref = [
