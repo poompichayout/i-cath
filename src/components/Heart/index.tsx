@@ -1,38 +1,70 @@
-import { CSSProperties, MouseEventHandler, SVGProps, useRef } from 'react'
+import {
+  CSSProperties,
+  MouseEventHandler,
+  SVGProps,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react'
+
+import { useCaththerizeContext } from 'src/contexts/CathetherizeContext'
 
 const PATH_STYLE: CSSProperties = { transition: '0.3s' }
 
 export default function Heart(props: SVGProps<SVGSVGElement>) {
+  const { pageId, setPageId } = useCaththerizeContext()
+
   const rightAtriumRef = useRef<SVGPathElement>(null)
   const rightVentricleRef = useRef<SVGPathElement>(null)
   const pulmonaryArteryRef = useRef<SVGPathElement>(null)
   const lungBedRef = useRef<SVGPathElement>(null)
 
+  const ref = useMemo(
+    () => [rightAtriumRef, rightVentricleRef, pulmonaryArteryRef, lungBedRef],
+    []
+  )
+
+  const highlight = useCallback((e: SVGPathElement) => {
+    e.style.opacity = '0.2'
+  }, [])
+
+  const deHighlight = useCallback((e: SVGPathElement) => {
+    e.style.opacity = '1'
+  }, [])
+
+  useEffect(() => {
+    const selectedRef = ref[Number(pageId) - 1]
+    if (selectedRef.current) {
+      highlight(selectedRef.current)
+    }
+  }, [ref, pageId, highlight])
+
+  const onClick: MouseEventHandler<SVGImageElement> = (e) => {
+    const selectedRef = ref[Number(e.currentTarget.id) - 1]
+    ref.forEach((c) => {
+      if (c.current) deHighlight(c.current)
+    })
+
+    if (selectedRef.current) {
+      highlight(selectedRef.current)
+    }
+    setPageId(Number(e.currentTarget.id))
+  }
+
   const onMouseOver: MouseEventHandler<SVGImageElement> = (e) => {
-    const ref = [
-      rightAtriumRef,
-      rightVentricleRef,
-      pulmonaryArteryRef,
-      lungBedRef,
-    ]
     const selectedRef = ref[Number(e.currentTarget.id) - 1]
 
     if (selectedRef.current) {
-      selectedRef.current.style.opacity = '0.2'
+      highlight(selectedRef.current)
     }
   }
 
   const onMouseOut: MouseEventHandler<SVGImageElement> = (e) => {
-    const ref = [
-      rightAtriumRef,
-      rightVentricleRef,
-      pulmonaryArteryRef,
-      lungBedRef,
-    ]
     const selectedRef = ref[Number(e.currentTarget.id) - 1]
 
-    if (selectedRef.current) {
-      selectedRef.current.style.opacity = '1'
+    if (selectedRef.current && Number(e.currentTarget.id) !== pageId) {
+      deHighlight(selectedRef.current)
     }
   }
 
@@ -107,7 +139,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         d="M102.72 258.37c.52 15.54-30.83 50.03-27.11 128.97 6.73 64.22 59.04 105.65 68.36 110.83 2.07-6.73 3.11-39.36 21.75-48.17 18.64-8.8 41.95 4.14 41.95 4.14s-15.02-19.16-15.02-36.25 13.46-30.04 19.16-35.73c1.04-13.98 4.14-57.49-6.73-88.56-10.88-31.07-36.93-41.92-36.93-41.92z"
         strokeWidth="1.00000003pt"
         fillRule="evenodd"
-		style={PATH_STYLE}
+        style={PATH_STYLE}
       />
       <path
         fill="none"
@@ -152,13 +184,13 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         fillRule="evenodd"
       />
       <path
-	  	ref={lungBedRef}
+        ref={lungBedRef}
         fill="#e5b3ff"
         d="M267.91 377.64c1.08-19.56 6.44-42.76-.58-65.14.43-31.48 1.67-65.38 11.22-87.7 25.52-41.64 127.05-21.27 140.84-13.13l12.99-35.24c-3.5-1.41-11.05-4.43-16.8-6.07 1.87-3.14 3.56-8.1 4.65-10.67.74-3.48-12.44-8.68-18.47-3.77a64.429 64.429 0 01-3.31 6.9c-.3.54-.94 1.59-2.42 1.67-26.28-5.53-61.73-10.61-85.3-4.37-45.73 11.89-66.71-17.34-84.32 15.49-11.62 21.35-1.65 44.94-6.83 62.07-2.73 9.03-8.05 40.02-11.64 72.19-8.35 28.84-6.46 58.62-2.34 74.37 20.26-11.53 37.74-4.69 62.31-6.59z"
         strokeWidth={2.5}
         stroke="#1f241c"
         fillRule="evenodd"
-		style={PATH_STYLE}
+        style={PATH_STYLE}
       />
       <path
         fill="#fff"
@@ -668,6 +700,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={{ cursor: 'pointer' }}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseOut}
+        onClick={onClick}
       />
       <image
         id="2"
@@ -679,6 +712,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={{ cursor: 'pointer' }}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseOut}
+        onClick={onClick}
       />
       <image
         id="3"
@@ -690,6 +724,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={{ cursor: 'pointer' }}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseOut}
+        onClick={onClick}
       />
       <image
         id="4"
@@ -701,6 +736,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={{ cursor: 'pointer' }}
         onMouseOver={onMouseOver}
         onMouseLeave={onMouseOut}
+        onClick={onClick}
       />
     </svg>
   )
