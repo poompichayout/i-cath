@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import TextField from '@mui/material/TextField'
@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
 import { getCIKnownCO, NumberFormat } from 'src/utils'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 export type FormValues = {
   cardiacOutput: number
@@ -26,8 +27,15 @@ interface FormProps {
 const GRID_TEXT_FIELD_PROPS = { xs: 10, lg: 8, xl: 6 }
 
 const CIForm = ({ knownCO, knownBSA }: FormProps) => {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   const [result, setResult] = useState<number>(0)
   const { register, handleSubmit } = useForm<FormValues>()
+
+  useEffect(() => {
+    setResult(0)
+  }, [knownCO, knownBSA])
 
   const onSubmit = (values: FormValues) => {
     const {
@@ -74,47 +82,45 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
               </Grid>
             </Grid>
           ) : (
-            <>
-              <Grid container spacing={2}>
-                <Grid item {...GRID_TEXT_FIELD_PROPS}>
-                  <TextField
-                    id="strokeVolume"
-                    type="number"
-                    label="Stroke Volume"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">mL/beat</InputAdornment>
-                      ),
-                    }}
-                    {...register('strokeVolume')}
-                  />
-                </Grid>
+            <Grid container spacing={2}>
+              <Grid item {...GRID_TEXT_FIELD_PROPS}>
+                <TextField
+                  id="strokeVolume"
+                  type="number"
+                  label="Stroke Volume"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">mL/beat</InputAdornment>
+                    ),
+                  }}
+                  {...register('strokeVolume')}
+                />
               </Grid>
 
-              <Grid container spacing={2} mt={2}>
-                <Grid item {...GRID_TEXT_FIELD_PROPS}>
-                  <TextField
-                    id="hearthRate"
-                    type="number"
-                    label="Heart Rate"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          beats/min
-                        </InputAdornment>
-                      ),
-                    }}
-                    {...register('hearthRate')}
-                  />
-                </Grid>
+              <Grid
+                item
+                {...GRID_TEXT_FIELD_PROPS}
+                sx={isMobile ? { mt: 2 } : undefined}
+              >
+                <TextField
+                  id="hearthRate"
+                  type="number"
+                  label="Heart Rate"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">beats/min</InputAdornment>
+                    ),
+                  }}
+                  {...register('hearthRate')}
+                />
               </Grid>
-            </>
+            </Grid>
           )}
 
           {knownBSA ? (
@@ -139,45 +145,45 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
               </Grid>
             </Grid>
           ) : (
-            <>
-              <Grid container spacing={2} mt={2}>
-                <Grid item {...GRID_TEXT_FIELD_PROPS}>
-                  <TextField
-                    id="weight"
-                    type="number"
-                    label="Weight"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">kg</InputAdornment>
-                      ),
-                    }}
-                    {...register('weight')}
-                  />
-                </Grid>
+            <Grid container spacing={2} mt={2}>
+              <Grid item {...GRID_TEXT_FIELD_PROPS}>
+                <TextField
+                  id="weight"
+                  type="number"
+                  label="Weight"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">kg</InputAdornment>
+                    ),
+                  }}
+                  {...register('weight')}
+                />
               </Grid>
 
-              <Grid container spacing={2} mt={2}>
-                <Grid item {...GRID_TEXT_FIELD_PROPS}>
-                  <TextField
-                    id="height"
-                    type="number"
-                    label="Height"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">cm</InputAdornment>
-                      ),
-                    }}
-                    {...register('height')}
-                  />
-                </Grid>
+              <Grid
+                item
+                {...GRID_TEXT_FIELD_PROPS}
+                sx={isMobile ? { mt: 2 } : undefined}
+              >
+                <TextField
+                  id="height"
+                  type="number"
+                  label="Height"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">cm</InputAdornment>
+                    ),
+                  }}
+                  {...register('height')}
+                />
               </Grid>
-            </>
+            </Grid>
           )}
 
           <Grid container spacing={2} mt={2}>
