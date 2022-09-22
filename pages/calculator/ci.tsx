@@ -3,18 +3,17 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 
 import Box from '@mui/material/Box'
+import CheckBox from '@mui/material/CheckBox'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import Stack from '@mui/material/Stack'
-import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
 
 import CIForm from 'src/components/Form/CI'
-import CINoForm from 'src/components/Form/CI/CINo'
 import Meta from 'src/components/Meta'
 
 const CIPage: NextPage = () => {
-  const [knownData, setKnown] = useState<boolean>(true)
+  const [knownCO, setKnownCO] = useState<boolean>(true)
+  const [knownBSA, setKnownBSA] = useState<boolean>(true)
   return (
     <>
       <Meta title="CI - Calculator" />
@@ -27,18 +26,27 @@ const CIPage: NextPage = () => {
         <Grid item xs={12} sm={10} lg={8}>
           <Typography variant="h3">Cardiac Index (CI)</Typography>
           <Divider sx={{ my: 3 }} />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '50px' }}>
-            <Typography>Do you know cardiac output</Typography>
-            <Stack direction="row" spacing={1} alignItems="center">
-              <Typography>No</Typography>
-              <Switch
-                checked={knownData}
-                onChange={(event) => setKnown(event.target.checked)}
-              />
-              <Typography>Yes</Typography>
-            </Stack>
+          <Box
+            sx={{
+              maxWidth: 'fit-content',
+              display: 'flex',
+              justifyContent: 'right',
+              alignItems: 'center',
+            }}
+          >
+            <CheckBox
+              checked={knownCO}
+              onChange={(event) => setKnownCO(event.target.checked)}
+            />
+            <Typography>Known cardiac output</Typography>
+
+            <CheckBox
+              checked={knownBSA}
+              onChange={(event) => setKnownBSA(event.target.checked)}
+            />
+            <Typography>Known BSA</Typography>
           </Box>
-          {knownData ? <CIForm /> : <CINoForm />}
+          <CIForm knownCO={knownCO} knownBSA={knownBSA} />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">Cardiac Index equation</Typography>
           <Typography my={3} align="justify">

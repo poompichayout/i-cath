@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Image from 'next/image'
 
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
@@ -9,67 +8,175 @@ import Typography from '@mui/material/Typography'
 import InputAdornment from '@mui/material/InputAdornment'
 
 import { getCIKnownCO, NumberFormat } from 'src/utils'
-import BSAForm from './BSAForm'
 
 export type FormValues = {
   cardiacOutput: number
   bodySurfaceArea: number
+  weight: number
+  height: number
+  strokeVolume: number
+  hearthRate: number
 }
 
-const CIForm = () => {
-  const [result, setResult] = useState<number>(0)
-  const { register, handleSubmit, setValue } = useForm<FormValues>()
+interface FormProps {
+  knownCO: boolean
+  knownBSA: boolean
+}
 
-  const onSubmit = ({ cardiacOutput, bodySurfaceArea }: FormValues) => {
-    const ci = getCIKnownCO(cardiacOutput, bodySurfaceArea)
-    if (!Number.isNaN(ci)) {
-      setResult(ci)
-    } else {
-      setResult(0)
-    }
+const CIForm = ({ knownCO, knownBSA }: FormProps) => {
+  const [result, setResult] = useState<number>(0)
+  const { register, handleSubmit } = useForm<FormValues>()
+
+  const onSubmit = (values: FormValues) => {
+    const {
+      cardiacOutput,
+      bodySurfaceArea,
+      weight,
+      height,
+      strokeVolume,
+      hearthRate,
+    } = values
+
+    const bsaFromWeight =
+      0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425)
+
+    const ci = getCIKnownCO(
+      knownCO ? cardiacOutput : strokeVolume * hearthRate,
+      knownBSA ? bodySurfaceArea : bsaFromWeight
+    )
+
+    setResult(Number.isNaN(ci) ? 0 : ci)
   }
 
   return (
     <Grid container mt={3}>
       <Grid item xs={12}>
         <Box component="form" onChange={handleSubmit(onSubmit)}>
-          <Grid container spacing={2}>
-            <Grid
-              item
-              xs={5}
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Image
-                src="/images/form/ci_yes/CO.svg"
-                width={200}
-                height={50}
-                alt="Cardiac Output"
-              />
+          {knownCO ? (
+            <Grid container spacing={2}>
+              <Grid item xs={5}>
+                <TextField
+                  id="cardiacOutput"
+                  type="number"
+                  label="Cardiac Output"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">L/min</InputAdornment>
+                    ),
+                  }}
+                  {...register('cardiacOutput')}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={7}>
-              <TextField
-                id="cardiacOutput"
-                type="number"
-                label="Cardiac Output"
-                variant="outlined"
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">L/min</InputAdornment>
-                  ),
-                }}
-                {...register('cardiacOutput')}
-              />
-            </Grid>
-          </Grid>
+          ) : (
+            <>
+              <Grid container spacing={2}>
+                <Grid item xs={5}>
+                  <TextField
+                    id="strokeVolume"
+                    type="number"
+                    label="Stroke Volume"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">mL/beat</InputAdornment>
+                      ),
+                    }}
+                    {...register('strokeVolume')}
+                  />
+                </Grid>
+              </Grid>
 
-          <BSAForm
-            register={register}
-            setValue={setValue}
-          />
+              <Grid container spacing={2} mt={2}>
+                <Grid item xs={5}>
+                  <TextField
+                    id="hearthRate"
+                    type="number"
+                    label="Heart Rate"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          beats/min
+                        </InputAdornment>
+                      ),
+                    }}
+                    {...register('hearthRate')}
+                  />
+                </Grid>
+              </Grid>
+            </>
+          )}
+
+          {knownBSA ? (
+            <Grid container spacing={2} mt={2}>
+              <Grid item xs={5}>
+                <TextField
+                  id="bodySurfaceArea"
+                  type="number"
+                  label="Body surface area"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        m<sup>2</sup>
+                      </InputAdornment>
+                    ),
+                  }}
+                  {...register('bodySurfaceArea')}
+                />
+              </Grid>
+            </Grid>
+          ) : (
+            <>
+              <Grid container spacing={2} mt={2}>
+                <Grid item xs={5}>
+                  <TextField
+                    id="weight"
+                    type="number"
+                    label="Weight"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">kg</InputAdornment>
+                      ),
+                    }}
+                    {...register('weight')}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container spacing={2} mt={2}>
+                <Grid item xs={5}>
+                  <TextField
+                    id="height"
+                    type="number"
+                    label="Height"
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">cm</InputAdornment>
+                      ),
+                    }}
+                    {...register('height')}
+                  />
+                </Grid>
+              </Grid>
+            </>
+          )}
 
           <Grid container spacing={2} mt={2}>
             <Grid
@@ -77,26 +184,12 @@ const CIForm = () => {
               xs={5}
               sx={{
                 display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Image
-                src="/images/form/ci_yes/CI.svg"
-                width={200}
-                height={50}
-                alt="Cardiac Index"
-              />
-            </Grid>
-            <Grid
-              item
-              xs={7}
-              sx={{
-                display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between',
               }}
             >
+              <Typography>Cardiac Index</Typography>
               <Typography fontSize={20}>
                 {NumberFormat.format(result)}
               </Typography>
