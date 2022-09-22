@@ -23,6 +23,8 @@ interface FormProps {
   knownBSA: boolean
 }
 
+const GRID_TEXT_FIELD_PROPS = { xs: 10, lg: 8, xl: 6 }
+
 const CIForm = ({ knownCO, knownBSA }: FormProps) => {
   const [result, setResult] = useState<number>(0)
   const { register, handleSubmit } = useForm<FormValues>()
@@ -54,7 +56,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
         <Box component="form" onChange={handleSubmit(onSubmit)}>
           {knownCO ? (
             <Grid container spacing={2}>
-              <Grid item xs={5}>
+              <Grid item {...GRID_TEXT_FIELD_PROPS}>
                 <TextField
                   id="cardiacOutput"
                   type="number"
@@ -74,7 +76,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
           ) : (
             <>
               <Grid container spacing={2}>
-                <Grid item xs={5}>
+                <Grid item {...GRID_TEXT_FIELD_PROPS}>
                   <TextField
                     id="strokeVolume"
                     type="number"
@@ -93,7 +95,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
               </Grid>
 
               <Grid container spacing={2} mt={2}>
-                <Grid item xs={5}>
+                <Grid item {...GRID_TEXT_FIELD_PROPS}>
                   <TextField
                     id="hearthRate"
                     type="number"
@@ -117,7 +119,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
 
           {knownBSA ? (
             <Grid container spacing={2} mt={2}>
-              <Grid item xs={5}>
+              <Grid item {...GRID_TEXT_FIELD_PROPS}>
                 <TextField
                   id="bodySurfaceArea"
                   type="number"
@@ -139,7 +141,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
           ) : (
             <>
               <Grid container spacing={2} mt={2}>
-                <Grid item xs={5}>
+                <Grid item {...GRID_TEXT_FIELD_PROPS}>
                   <TextField
                     id="weight"
                     type="number"
@@ -158,7 +160,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
               </Grid>
 
               <Grid container spacing={2} mt={2}>
-                <Grid item xs={5}>
+                <Grid item {...GRID_TEXT_FIELD_PROPS}>
                   <TextField
                     id="height"
                     type="number"
@@ -181,7 +183,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
           <Grid container spacing={2} mt={2}>
             <Grid
               item
-              xs={5}
+              {...GRID_TEXT_FIELD_PROPS}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
