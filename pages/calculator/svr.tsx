@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-import SVRForm from 'src/components/Form/SVR'
+import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
 
 const SVRPage: NextPage = () => {
@@ -23,7 +23,7 @@ const SVRPage: NextPage = () => {
             Systemic vascular resistance (SVR)
           </Typography>
           <Divider sx={{ mt: 3 }} />
-          <SVRForm />
+          <Form />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">
             Systemic vascular resistance equation

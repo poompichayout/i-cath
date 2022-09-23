@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-import FickForm from 'src/components/Form/Fick'
+import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
 
 const COPage: NextPage = () => {
@@ -21,7 +21,7 @@ const COPage: NextPage = () => {
         <Grid item xs={12} sm={10} lg={8}>
           <Typography variant="h3">Cardiac Output - Fick</Typography>
           <Divider sx={{ mt: 3 }} />
-          <FickForm />
+          <Form />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">The Fick principle</Typography>
           <Typography my={3} align="justify">

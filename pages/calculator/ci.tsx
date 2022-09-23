@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 
 import Box from '@mui/material/Box'
-import CheckBox from '@mui/material/CheckBox'
+import CheckBox from '@mui/material/Checkbox'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'

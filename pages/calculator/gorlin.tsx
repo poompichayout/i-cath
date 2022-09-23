@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-import GorlinForm from 'src/components/Form/Gorlin'
+import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
 
 const GorlinPage: NextPage = () => {
@@ -23,7 +23,7 @@ const GorlinPage: NextPage = () => {
             The Gorlin equation - Valve area measurement
           </Typography>
           <Divider sx={{ mt: 3 }} />
-          <GorlinForm />
+          <Form />
           <Divider sx={{ my: 3 }} />
           <Typography variant="h4">Gorlin equation</Typography>
           <Typography my={3} align="justify">
