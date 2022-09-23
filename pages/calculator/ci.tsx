@@ -38,7 +38,7 @@ const CIPage: NextPage = () => {
               checked={knownCO}
               onChange={(event) => setKnownCO(event.target.checked)}
             />
-            <Typography>Known cardiac output</Typography>
+            <Typography sx={{ mr: 1 }}>Known cardiac output</Typography>
 
             <CheckBox
               checked={knownBSA}

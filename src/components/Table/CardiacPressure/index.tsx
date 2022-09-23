@@ -16,7 +16,7 @@ const CardiacPressureTable = () => {
           <TableRow>
             <TableCell>Chamber</TableCell>
             <TableCell align="center">Format</TableCell>
-            <TableCell align="right">Mean</TableCell>
+            <TableCell align="center">Mean</TableCell>
             <TableCell align="right">Normal range</TableCell>
             <TableCell align="right">O2 content</TableCell>
           </TableRow>
@@ -28,7 +28,7 @@ const CardiacPressureTable = () => {
                 {e.chamber}
               </TableCell>
               <TableCell align="center">{e.format}</TableCell>
-              <TableCell align="right">{e.mean}</TableCell>
+              <TableCell align="center">{e.mean}</TableCell>
               <TableCell align="right">{e.normalrange}</TableCell>
               <TableCell align="right">{e.o2content}</TableCell>
             </TableRow>
