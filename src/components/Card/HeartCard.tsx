@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Card, CardContent, List, ListItem } from '@mui/material'
+import { Card, CardContent, Chip, Divider, List, ListItem } from '@mui/material'
 import Typography from '@mui/material/Typography'
 
 import { useCaththerizeContext } from 'src/contexts/CathetherizeContext'
@@ -14,25 +14,38 @@ const HeartCard = () => {
   return (
     <Card>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h4" component="div">
           Cathether site {pageId}
         </Typography>
+        <Divider variant="middle" sx={{ my: 2 }} />
         <Typography gutterBottom variant="body2" color="text.secondary">
           Descriptions
         </Typography>
-        <List disablePadding sx={{ pl: 2, display: 'list-item' }}>
-          <ListItem disablePadding>
+        <List disablePadding sx={{ display: 'list-item' }}>
+          <ListItem sx={{ gridGap: 8 }}>
+            <Chip
+              label={
+                <Typography variant="caption" color="text.secondary">
+                  Location of cathether
+                </Typography>
+              }
+            />
             <Typography variant="body2" noWrap color="text.secondary">
-              <b>Location of cathether:</b>&nbsp;{information.title}
+              {information.title}
             </Typography>
           </ListItem>
-          <ListItem disablePadding sx={{ display: 'block' }}>
-            <Typography variant="body2" color="text.secondary">
-              <b>Normal range of {information.subtitle} pressure:</b>
-            </Typography>
-            <List disablePadding sx={{ pl: 2, display: 'list-item' }}>
+          <ListItem sx={{ display: 'block' }}>
+            <Chip
+              label={
+                <Typography variant="caption" color="text.secondary">
+                  Normal range of {information.subtitle} pressure
+                </Typography>
+              }
+            />
+
+            <List sx={{ pl: 2, display: 'list-item' }}>
               {information.description.map((e) => (
-                <ListItem key={e} disablePadding>
+                <ListItem key={e} disablePadding sx={{ gridGap: 8 }}>
                   <Typography variant="body2" color="text.secondary">
                     {e}
                   </Typography>
@@ -40,12 +53,21 @@ const HeartCard = () => {
               ))}
             </List>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem sx={{ gridGap: 8 }}>
+            <Chip
+              label={
+                <Typography variant="caption" noWrap color="text.secondary">
+                  Oxygen saturation
+                </Typography>
+              }
+            />
             <Typography variant="body2" noWrap color="text.secondary">
-              <b>Oxygen saturation:</b>&nbsp;{information.saturation}
+              {information.saturation}
             </Typography>
           </ListItem>
         </List>
+
+        <Divider variant="middle" sx={{ my: 2 }} />
 
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
           Waveforms

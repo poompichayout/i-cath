@@ -39,7 +39,8 @@ const CatheterSimPage: NextPage = () => {
                 sm={5}
                 sx={{
                   display: 'flex',
-                  justifyContent: isMobile ? 'center' : 'start',
+                  justifyContent: isMobile ? 'center' : 'left',
+                  alignItems: 'start',
                 }}
               >
                 <Heart />

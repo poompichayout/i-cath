@@ -352,6 +352,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
           opacity="0.4"
         ></path>
         <path
+          ref={lungBedRef}
           fill="#e5b3ff"
           fillRule="evenodd"
           stroke="#1f241c"
@@ -381,6 +382,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
           opacity="0.99"
         ></path>
         <path
+          ref={pulmonaryArteryRef}
           fill="#e5b3ff"
           fillRule="evenodd"
           stroke="#1f241c"
