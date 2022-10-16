@@ -26,11 +26,11 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
   )
 
   const highlight = useCallback((e: SVGPathElement) => {
-    e.style.opacity = '0.2'
+    // e.style.opacity = '0.2'
   }, [])
 
   const deHighlight = useCallback((e: SVGPathElement) => {
-    e.style.opacity = '1'
+    // e.style.opacity = '1'
   }, [])
 
   useEffect(() => {

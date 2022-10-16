@@ -1,7 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { Card, CardContent, Chip, Divider, List, ListItem } from '@mui/material'
+import {
+  Box,
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+  List,
+  ListItem,
+} from '@mui/material'
 import Typography from '@mui/material/Typography'
 
 import { useCaththerizeContext } from 'src/contexts/CathetherizeContext'
@@ -72,12 +80,20 @@ const HeartCard = () => {
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
           Waveforms
         </Typography>
-        <Image
-          src="/images/fallback.webp"
-          width={400}
-          height={300}
-          alt="fallback"
-        />
+        <Box mt={1} display="flex" alignItems="center" flexDirection="column" gap={2}>
+          <Image
+            src={`/images/heartrate/base${pageId}.gif`}
+            width={480}
+            height={136}
+            alt="fallback"
+          />
+          <Image
+            src={`/images/heartrate/${pageId}.gif`}
+            width={480}
+            height={136}
+            alt="fallback"
+          />
+        </Box>
       </CardContent>
     </Card>
   )
