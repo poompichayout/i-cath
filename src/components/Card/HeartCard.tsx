@@ -83,15 +83,9 @@ const HeartCard = () => {
         <Box mt={1} display="flex" alignItems="center" flexDirection="column" gap={2}>
           <Image
             src={`/images/heartrate/base${pageId}.gif`}
-            width={480}
-            height={136}
-            alt="fallback"
-          />
-          <Image
-            src={`/images/heartrate/${pageId}.gif`}
-            width={480}
-            height={136}
-            alt="fallback"
+            width={600}
+            height={338}
+            alt="waveforms"
           />
         </Box>
       </CardContent>
