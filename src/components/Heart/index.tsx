@@ -76,6 +76,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
       x="0"
       y="0"
       width="532.9"
+      enableBackground="new 0 0 532.9 640.8"
       version="1.1"
       viewBox="0 0 532.9 640.8"
       xmlSpace="preserve"
