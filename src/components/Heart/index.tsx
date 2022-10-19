@@ -922,7 +922,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={PATH_STYLE}
         ref={rightAtriumRef}
         fill="none"
-        stroke="#70e1f5"
+        stroke="none"
         strokeWidth="5"
         strokeMiterlimit="10"
         d="M175.5 275.6c-.3.7-.6 1.7-1.1 2.9-1.2 2.8-4.1 9.2-9.5 15.4-3.2 3.6-10.7 9.4-16.1 11.5s-13.3 4.9-22.2 5.1-13.8-1.1-22-6.9-7.7-12.9-7.7-12.9c-1.9 2.5-4.3 5.9-6.8 10.1-1.2 1.9-4.4 7.3-6.6 12.8-2.9 7.1-3.4 12.8-4.5 24.1-.6 6.6-1.1 15-.7 24.9.3 7.4.9 12.8 1.7 19.4 1.4 12.3 3.3 21.7 4.8 29.6 1 5.2 2.5 12.4 4.5 21 0 0 8.9 21.3 12.6 27.6 3.7 6.3 17.7 19.9 17.7 19.9l16 2.3 2-5.2 4.1-7.4s1.1-4.2 8.5-12 14.2-9.8 20.1-11.3c5.9-1.5 13.1-2.8 23.7 0s14.6 7.9 14.6 7.9l3.3-4.6c-2.3-1.5-5.2-3.6-8.3-6.3-4.9-4.4-8-8.3-8.6-9.1-3.4-4.4-6.2-8-7.8-13.6-.7-2.3-2.9-9.9 0-17.4 1.1-2.9 2.9-5.5 3.5-6.4 1.1-1.7 2.6-3.4 5.1-5.9 5.5-5.5 6.4-5 6.4-5l-1.1-2.6c-1.1-2.6-1.5-6.3-2.1-10.8-.5-4.5 2.2-11.6 2.2-11.6V345c.4-8.2 1.7-14.8 2.6-19.7.7-3.9 1.5-7.1 2.1-9.5-6-7.3-12-14.6-18-22l-12.4-18.2z"
@@ -931,7 +931,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={PATH_STYLE}
         ref={rightVentricleRef}
         fill="none"
-        stroke="#70e1f5"
+        stroke="none"
         strokeWidth="5"
         strokeMiterlimit="10"
         d="M211.5,390c0,0,8.5,7.6,15.2,8.9c6.6,1.3,12,2.3,20.1,0.7
@@ -948,7 +948,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={PATH_STYLE}
         ref={pulmonaryArteryRef}
         fill="none"
-        stroke="#70e1f5"
+        stroke="none"
         strokeWidth="5"
         strokeMiterlimit="10"
         d="M217.8,251.3c0,0,9.3-6.6,26.4-5.6s26.4,9.9,26.4,9.9l-1.4,18.6
@@ -961,7 +961,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         style={PATH_STYLE}
         ref={lungBedRef}
         fill="none"
-        stroke="#70e1f5"
+        stroke="none"
         strokeWidth="5"
         strokeMiterlimit="10"
         d="M314.4,159c0,0-10.2,10.7-7.2,25c3.1,14.3,9,18.2,9,18.2
