@@ -26,7 +26,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
   )
 
   const highlight = useCallback((e: SVGPathElement) => {
-    e.style.stroke = '#d8ffae'
+    e.style.stroke = '#f72121'
     e.style.zIndex = '999'
   }, [])
 
