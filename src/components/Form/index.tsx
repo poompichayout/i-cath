@@ -42,7 +42,7 @@ const Form = () => {
               spacing={2}
               {...(index !== 0 ? { mt: 2 } : undefined)}
             >
-              <Grid item xs={7}>
+              <Grid item xs={12} md={10} xl={7}>
                 <TextField
                   id={e.id}
                   type="number"
@@ -66,7 +66,9 @@ const Form = () => {
           <Grid container spacing={2} mt={2}>
             <Grid
               item
-              xs={7}
+              xs={12}
+              md={10}
+              xl={7}
               sx={{
                 display: 'flex',
                 flexDirection: 'row',

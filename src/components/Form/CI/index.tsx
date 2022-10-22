@@ -24,7 +24,7 @@ interface FormProps {
   knownBSA: boolean
 }
 
-const GRID_TEXT_FIELD_PROPS = { xs: 10, lg: 8, xl: 6 }
+const GRID_TEXT_FIELD_PROPS = { xs: 12, md: 10, lg: 6, xl: 6 }
 
 const CIForm = ({ knownCO, knownBSA }: FormProps) => {
   const theme = useTheme()
