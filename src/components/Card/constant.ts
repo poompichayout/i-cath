@@ -1,5 +1,6 @@
 export const data = [
   {
+    header: 'Right atrium pressure (RAP)',
     title: 'Right atrium',
     subtitle: 'right atrium',
     description: [
@@ -9,12 +10,14 @@ export const data = [
     saturation: '75% - 80%',
   },
   {
+    header: 'Right ventricular pressure (RVP)',
     title: 'Right ventricle',
     subtitle: 'right ventricle',
     description: ['Peak-systolic: 15-30 mmHg', 'End-diastolic: 1-7 mmHg'],
     saturation: '75%',
   },
   {
+    header: 'Pulmonary artery pressure (PAP)',
     title: 'Pulmonary artery',
     subtitle: 'pulmonary artery',
     description: [
@@ -25,7 +28,8 @@ export const data = [
     saturation: '75% - 80%',
   },
   {
-    title: 'In the lung bed',
+    header: 'Pulmonary capillary wedge pressure',
+    title: 'Branch of pulmonary artery with ballon inflation',
     subtitle: 'pulmonary capillary wedge',
     description: [
       'Normal range: 4-12 mmHg',

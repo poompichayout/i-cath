@@ -23,7 +23,7 @@ const HeartCard = () => {
     <Card>
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
-          Cathether site {pageId}
+          {information.header}
         </Typography>
         <Divider variant="middle" sx={{ my: 2 }} />
         <Typography gutterBottom variant="body2" color="text.secondary">
@@ -88,6 +88,10 @@ const HeartCard = () => {
             alt="waveforms"
           />
         </Box>
+
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+          Reference: Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.). Saunders
+        </Typography>
       </CardContent>
     </Card>
   )

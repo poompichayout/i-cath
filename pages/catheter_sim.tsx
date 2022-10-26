@@ -25,7 +25,7 @@ const CatheterSimPage: NextPage = () => {
         sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <Grid item xs={12} sm={10} lg={10}>
-          <Typography variant="h3">Cathetherize Simulator</Typography>
+          <Typography variant="h3">Right heart catheterization simulator</Typography>
           <Divider sx={{ my: 3 }} />
           <Grid
             container
