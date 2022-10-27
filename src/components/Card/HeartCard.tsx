@@ -80,17 +80,25 @@ const HeartCard = () => {
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
           Waveforms
         </Typography>
-        <Box mt={1} display="flex" alignItems="center" flexDirection="column" gap={2}>
+        <Box
+          mt={1}
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
+          gap={2}
+        >
           <Image
-            src={`/images/heartrate/base${pageId}.gif`}
-            width={600}
-            height={338}
+            src={`/images/heartrate/${pageId}.gif`}
+            objectFit="cover"
+            width={500}
+            height={200}
             alt="waveforms"
           />
         </Box>
 
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          Reference: Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.). Saunders
+          Reference: Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.).
+          Saunders
         </Typography>
       </CardContent>
     </Card>
