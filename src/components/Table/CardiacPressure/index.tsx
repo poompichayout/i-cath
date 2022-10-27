@@ -15,7 +15,6 @@ const CardiacPressureTable = () => {
         <TableHead>
           <TableRow>
             <TableCell>Chamber</TableCell>
-            <TableCell align="center">Format</TableCell>
             <TableCell align="center">Mean</TableCell>
             <TableCell align="right">Normal range</TableCell>
             <TableCell align="right">O2 content</TableCell>
@@ -23,11 +22,10 @@ const CardiacPressureTable = () => {
         </TableHead>
         <TableBody>
           {data.map((e) => (
-            <TableRow key={e.id}>
+            <TableRow hover key={e.id}>
               <TableCell component="th" scope="row">
                 {e.chamber}
               </TableCell>
-              <TableCell align="center">{e.format}</TableCell>
               <TableCell align="center">{e.mean}</TableCell>
               <TableCell align="right">{e.normalrange}</TableCell>
               <TableCell align="right">{e.o2content}</TableCell>

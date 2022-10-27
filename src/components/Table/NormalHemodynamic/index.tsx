@@ -23,7 +23,7 @@ const NormalHemodynamicTable = () => {
         </TableHead>
         <TableBody>
           {data.map((e) => (
-            <TableRow key={e.id}>
+            <TableRow hover key={e.id}>
               <TableCell component="th" scope="row">
                 {e.parameter}
               </TableCell>

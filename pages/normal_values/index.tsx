@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
 import CardiacPressureTable from 'src/components/Table/CardiacPressure'
 import NormalHemodynamicTable from 'src/components/Table/NormalHemodynamic'
 
@@ -27,6 +28,9 @@ const NormalValuesPage: NextPage = () => {
           <Typography variant="h3">Normal Hemodynamic Value</Typography>
           <Divider sx={{ mt: 3 }} />
           <NormalHemodynamicTable />
+        </Grid>
+        <Grid item xs={12} sm={10} lg={8} mt={3}>
+          <ReferenceCard />
         </Grid>
       </Grid>
     </>
