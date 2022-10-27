@@ -18,6 +18,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
   const rightAtriumRef = useRef<SVGPathElement>(null)
   const rightVentricleRef = useRef<SVGPathElement>(null)
   const pulmonaryArteryRef = useRef<SVGPathElement>(null)
+  const pulmonaryArtery2Ref = useRef<SVGPathElement>(null)
   const lungBedRef = useRef<SVGPathElement>(null)
   const lungBed2Ref = useRef<SVGPathElement>(null)
 
@@ -25,7 +26,7 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
     () => [
       [rightAtriumRef],
       [rightVentricleRef],
-      [pulmonaryArteryRef],
+      [pulmonaryArteryRef, pulmonaryArtery2Ref],
       [lungBedRef, lungBed2Ref],
     ],
     []
@@ -970,12 +971,25 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         stroke="none"
         strokeWidth="5"
         strokeMiterlimit="10"
-        d="M217.8,251.3c0,0,9.3-6.6,26.4-5.6s26.4,9.9,26.4,9.9l-1.4,18.6
-        l-1.2,37.8c0,0,2,8.9,2.6,13.5c0.6,4.5,0.9,14,0.9,14l0,9c0,0-1.5,7-1.7,11.1c-0.2,4,0.3,9.2,0.3,9.2s-1.9,16.7-5.3,19.5
-        s-8.3,8.3-12.3,9.5c-4,1.1-11,3.7-18.4,2.4c-7.4-1.3-12.7-2.5-17.6-6.4c-4.9-3.9-4.9-3.9-4.9-3.9c-2.1-3.2-4.2-6.4-6.4-9.6
-        c-0.6-2.2-1.1-4.9-1.4-7.8c-0.5-5-0.2-9.3,0.3-12.7c0-1.2,0-2.4,0-3.6c-0.7-4-1.3-9.2-1-15.2c0.2-3.8,0.7-6.8,3.2-19.1
-        c2.7-13.4,2.5-11.6,3.2-15.3c0.8-4.4,1.3-7.7,3.3-25.3c0.7-5.7,1.3-11.5,2-17.2L217.8,251.3z"
-      ></path>
+        d="M201.9,349.8c0,0,0.1,20.8,2.6,28.3c2.4,7.5,6.3,13,14.5,17.5
+	c8.2,4.5,25.3,7.7,36.7,0.4c11.3-7.3,11.5-15.1,12.6-19.7s0-8.6,0-8.6l2-14.7l1.1-12.9c0,0-0.1-12.1-0.9-16.3s-2.4-10.1-2.4-10.1
+	l-0.3-1.5l0.3-10.6l0.2-11.5l0.7-12.7l0.9-11.6l1.5-11.8l1.4-8.7l3.3-12c0,0,4.1-11.7,8.4-15.9c4.4-4.2,10-8.5,16.8-10.9
+	c6.8-2.4,10.3-3.9,15.6-4.7c5.3-0.7,17.3-3.1,27.8-3c10.4,0.1,30.2,1.2,37,2.4c6.8,1.2,18.5,3.6,24.3,5.2s9.5,3.6,9.5,3.6
+	s5.1,4.7,9.4,2c4.2-2.7,9.4-5.5,12.5-14.4c3-9,2.6-14.8,0.7-18.4c-1.9-3.7-5.3-5-5.3-5l-16-5l3.9-10.2c0,0-2.3-4.1-7.9-5.3
+	c-5.5-1.2-11.4,0.7-11.4,0.7L397,163l-27.8-3.6l-11.9-1.5l-18.6-1.1l-14.8,0.7l-17.7,3.5l-15,1.8l-18.3-1.3l-16.2-2
+	c0,0-7.2-1.6-13.5,0.4c-6.4,2-10.6,5.8-13.4,10.5c-2.8,4.7-5.3,8.9-6.8,15.6c-1.5,6.6-2.4,18.2-1.9,22.5c0.6,4.3,1.1,19.8,0.4,23.2
+	c-0.8,3.4-4.2,18.2-5.1,23.2c-0.9,5-3.5,20.9-4,24.8c-0.6,3.9-3.8,30-3.8,30l-3.3,14.3l-1.9,10.2L201.9,349.8z"
+      />
+      <path
+        style={PATH_STYLE}
+        ref={pulmonaryArtery2Ref}
+        fill="none"
+        stroke="none"
+        strokeWidth="5"
+        strokeMiterlimit="10"
+        d="M53.2,167.8c0,0,12.6-5.4,24.1-7.4s24.7-3.8,24.7-3.8l1.6,45.7
+	l-27.4,4.3L62.4,209h-2.5c0,0-11.5-10.7-12-21.2C47.4,177.3,49.4,169.6,53.2,167.8z"
+      />
       <path
         style={PATH_STYLE}
         ref={lungBedRef}
