@@ -19,9 +19,15 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
   const rightVentricleRef = useRef<SVGPathElement>(null)
   const pulmonaryArteryRef = useRef<SVGPathElement>(null)
   const lungBedRef = useRef<SVGPathElement>(null)
+  const lungBed2Ref = useRef<SVGPathElement>(null)
 
   const ref = useMemo(
-    () => [rightAtriumRef, rightVentricleRef, pulmonaryArteryRef, lungBedRef],
+    () => [
+      [rightAtriumRef],
+      [rightVentricleRef],
+      [pulmonaryArteryRef],
+      [lungBedRef, lungBed2Ref],
+    ],
     []
   )
 
@@ -37,37 +43,49 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
 
   useEffect(() => {
     const selectedRef = ref[Number(pageId) - 1]
-    if (selectedRef.current) {
-      highlight(selectedRef.current)
-    }
+    selectedRef.forEach((e) => {
+      if (e.current) {
+        highlight(e.current)
+      }
+    })
   }, [ref, pageId, highlight])
 
   const onClick: MouseEventHandler<SVGImageElement> = (e) => {
     const selectedRef = ref[Number(e.currentTarget.id) - 1]
     ref.forEach((c) => {
-      if (c.current) deHighlight(c.current)
+      c.forEach((a) => {
+        if (a.current) {
+          deHighlight(a.current)
+        }
+      })
     })
 
-    if (selectedRef.current) {
-      highlight(selectedRef.current)
-    }
+    selectedRef.forEach((c) => {
+      if (c.current) {
+        highlight(c.current)
+      }
+    })
     setPageId(Number(e.currentTarget.id))
   }
 
   const onMouseOver: MouseEventHandler<SVGImageElement> = (e) => {
     const selectedRef = ref[Number(e.currentTarget.id) - 1]
 
-    if (selectedRef.current) {
-      highlight(selectedRef.current)
-    }
+    selectedRef.forEach((c) => {
+      if (c.current) {
+        highlight(c.current)
+      }
+    })
   }
 
   const onMouseOut: MouseEventHandler<SVGImageElement> = (e) => {
     const selectedRef = ref[Number(e.currentTarget.id) - 1]
 
-    if (selectedRef.current && Number(e.currentTarget.id) !== pageId) {
-      deHighlight(selectedRef.current)
-    }
+    selectedRef.forEach((c) => {
+      if (c.current && Number(e.currentTarget.id) !== pageId) {
+        deHighlight(c.current)
+      }
+    })
   }
 
   return (
@@ -971,6 +989,18 @@ export default function Heart(props: SVGProps<SVGSVGElement>) {
         c1.3-3.4,2.6-6.8,3.9-10.2c-3.1-3.7-6.1-5-8.4-5.4c-4.6-0.9-10.9,0.8-10.9,0.8l0,0l-2.8,5.8L397,163c-6.5-0.8-13-1.7-19.4-2.5
         c-6.9-0.9-13.9-1.8-20.8-2.7c-6.1-0.3-12.3-0.6-18.4-1c-4.8,0.2-9.6,0.4-14.5,0.7C320.7,158,317.6,158.5,314.4,159z"
       ></path>
+      <path
+        style={PATH_STYLE}
+        ref={lungBed2Ref}
+        fill="none"
+        strokeDasharray="20,10,5,5,5,10"
+        stroke="none"
+        strokeWidth="2"
+        strokeMiterlimit="10"
+        d="M504.2,200.4c-11.8-8.6-20.1,10.1-20.1,10.1
+	c-4.6,7.2-4.3,21.5,3.2,24.7L418,211.8l65.1,21.3c3.9,2,6.6,2.6,6.6,2.6s5.4,3.1,14.4-13.1C510.2,211.7,507,204.2,504.2,200.4
+	c-1.3-1.8-2.6-2.7-2.6-2.7l-67.3-22.7"
+      />
 
       <image
         id="1"
