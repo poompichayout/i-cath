@@ -88,6 +88,7 @@ const HeartCard = () => {
         >
           <Image
             src={`/images/heartrate/${pageId}.gif`}
+            priority
             objectFit="cover"
             width={500}
             height={200}
@@ -96,10 +97,6 @@ const HeartCard = () => {
         </Box>
         <Typography variant="body2" color="text.secondary" mt={2}>
           Reference:
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary" mt={2}>
-          Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.). Saunders
         </Typography>
         <Typography variant="body2" color="text.secondary" mt={1}>
           MSD Manuals. (n.d.). Table: Normal Pressures in the Heart and Great

@@ -4,7 +4,7 @@ export const data = [
     title: 'Right atrium',
     subtitle: 'right atrium',
     description: [
-      'Normal range: 1-8 mmHg (varies with respiration)',
+      'Normal range: 0-8 mmHg (varies with respiration)',
       'Mean right atrial pressure: 3 mmHg',
     ],
     saturation: '75% - 80%',
@@ -13,8 +13,8 @@ export const data = [
     header: 'Right ventricular pressure (RVP)',
     title: 'Right ventricle',
     subtitle: 'right ventricle',
-    description: ['Peak-systolic: 15-30 mmHg', 'End-diastolic: 1-7 mmHg'],
-    saturation: '75%',
+    description: ['Peak-systolic: 15-25 mmHg', 'End-diastolic: 0-8 mmHg'],
+    saturation: '75-80%',
   },
   {
     header: 'Pulmonary artery pressure (PAP)',
@@ -22,7 +22,7 @@ export const data = [
     subtitle: 'pulmonary artery',
     description: [
       'Peak-systolic pressure: 15-30 mmHg',
-      'End-diastoic pressure: 4-12 mmHg',
+      'End-diastoic pressure: 4-14 mmHg',
 	  'Mean pulmonary artery pressure: 15mmHg',
     ],
     saturation: '75% - 80%',
@@ -32,9 +32,9 @@ export const data = [
     title: 'Branch of pulmonary artery with ballon inflation',
     subtitle: 'pulmonary capillary wedge',
     description: [
-      'Normal range: 4-12 mmHg',
-      'Mean pulmonary capillary wedge pressure: 9 mmHg',
+      'Normal range: 2-12 mmHg',
+      'Mean pulmonary capillary wedge pressure: 8 mmHg',
     ],
-    saturation: '97%',
+    saturation: '95-100%',
   },
 ]
