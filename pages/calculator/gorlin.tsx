@@ -63,10 +63,10 @@ const GorlinPage: NextPage = () => {
           <Grid item sx={{ ml: 5, lineHeight: 1.5 }}>
             <Typography>F = Flow</Typography>
             <Typography>
-              C<sub>c</sub> = Orifice contraction
+              C<sub>c</sub> = 37.7 (osrifice contraction)
             </Typography>
             <Typography>
-              C<sub>v</sub> = Velocity loss coefficient
+              C<sub>v</sub> = 44.5 (velocity loss coefficient)
             </Typography>
             <Typography>g = Gravitational constant</Typography>
             <Typography>h = Pressure gradient</Typography>

@@ -11,6 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import { FormValues, NumberFormat } from 'src/utils'
 
 import calculator, { FORM } from './constants'
+import { Alert } from '@mui/material'
 
 const last = (arr: any[]) => arr[arr.length - 1]
 
@@ -85,6 +86,12 @@ const Form = () => {
               {form.resultEndLabel && (
                 <Typography>{form.resultEndLabel}</Typography>
               )}
+            </Grid>
+            <Grid item xs={12} md={10} xl={7}>
+              {form.shouldShowInterpretation?.(result) &&
+                form.resultInterpretation && (
+                  <Alert severity={form.alertVariant}>{form.resultInterpretation}</Alert>
+                )}
             </Grid>
           </Grid>
         </Box>

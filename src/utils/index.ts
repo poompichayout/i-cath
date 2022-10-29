@@ -37,7 +37,7 @@ export const getSVR = ({
   meanArterialPressure = 0,
   rightArterialPressure = 0,
   cardiacOutput = 0,
-}: FormValues) => (meanArterialPressure - rightArterialPressure) / cardiacOutput
+}: FormValues) => (meanArterialPressure - rightArterialPressure) / cardiacOutput * 80
 
 export const getPVR = ({
   meanPulmonaryArterialPressure = 0,

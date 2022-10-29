@@ -35,7 +35,7 @@ const PVRPage: NextPage = () => {
             vascular resistance (PVR) can be calculated by subtracting pulmonary
             capillary wedge pressure (PCWP) from the mean pulmonary arterial
             pressure (mPAP), divided by the cardiac output (CO) and multiplied
-            by 80. The typical range is 20 to 120 dyn s/cm<sup>-5</sup>.
+            by 80. The typical range is 20 to 120 dyn s/cm<sup>5</sup>.
           </Typography>
 
           <Typography variant="h6">

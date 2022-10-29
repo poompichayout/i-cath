@@ -1,3 +1,4 @@
+import { AlertColor } from '@mui/material'
 import Typography from '@mui/material/Typography'
 
 import * as utils from 'src/utils'
@@ -134,7 +135,17 @@ export const FORM: FormType = {
   },
 }
 
-const calculatorPage = {
+type CalculatorPageType = {
+  elements: ElementType[]
+  resultStartLabel: string
+  resultEndLabel: string | JSX.Element | null
+  resultInterpretation?: JSX.Element
+  shouldShowInterpretation?: (value: number) => boolean
+  alertVariant?: AlertColor
+  calculate: (value: utils.FormValues) => number
+}
+
+const calculatorPage: Record<string, CalculatorPageType> = {
   co: {
     elements: [
       FORM['arterialOxygenSaturation'],
@@ -168,9 +179,18 @@ const calculatorPage = {
     resultStartLabel: 'PVR',
     resultEndLabel: (
       <>
-        dyn&#12539;s/cm<sup>-5</sup>
+        dyn&#12539;s/cm<sup>5</sup>
       </>
     ),
+    resultInterpretation: (
+      <>
+        <Typography variant="caption" component="div">
+          (20 {'<='} PVR {'<='} 120) is a normal pulmonary vascular resistance.
+        </Typography>
+      </>
+    ),
+    alertVariant: 'info',
+    shouldShowInterpretation: (value: number) => value >= 20 && value <= 120,
     calculate: utils.getPVR,
   },
   papi: {
@@ -181,13 +201,26 @@ const calculatorPage = {
     ],
     resultStartLabel: 'PAPi',
     resultEndLabel: null,
+    resultInterpretation: (
+      <>
+        <Typography variant="caption" component="div">
+          &bull;&nbsp;PAPi {'<='} 0.9 predicts RV failure and in-hospital
+          mortality in inferior MI.
+        </Typography>
+        <Typography variant="caption" component="div">
+          &bull;&nbsp;PAPi {'<'} 1.85 predicts RV failure in patients with LVADS.
+        </Typography>
+      </>
+    ),
+    alertVariant: 'info',
+    shouldShowInterpretation: (value: number) => value !== 0,
     calculate: utils.getPAPi,
   },
   gorlin: {
     elements: [
       FORM['flow'],
-      FORM['orificeContraction'],
-      FORM['velocityLossCoefficient'],
+      // FORM['orificeContraction'],
+      // FORM['velocityLossCoefficient'],
       FORM['pressureGradient'],
     ],
     resultStartLabel: 'Area',
@@ -199,10 +232,7 @@ const calculatorPage = {
     calculate: utils.getGorlinArea,
   },
   hakki: {
-    elements: [
-      FORM['cardiacOutput'],
-      FORM['meanPressureGradient'],
-    ],
+    elements: [FORM['cardiacOutput'], FORM['meanPressureGradient']],
     resultStartLabel: 'AVA',
     resultEndLabel: (
       <>
