@@ -58,13 +58,13 @@ export const getPAPi = ({
 
 export const getGorlinArea = ({
   flow = 0,
-  orificeContraction = 0,
-  velocityLossCoefficient = 0,
+  // orificeContraction = 37.7,
+  // velocityLossCoefficient = 44.5,
   pressureGradient = 0,
 }: FormValues) =>
   flow /
-  (orificeContraction *
-    velocityLossCoefficient *
+  (37.7 *
+    44.5 *
     Math.sqrt(2 * 980 * pressureGradient))
 
 export const getAVA = ({ cardiacOutput = 0, meanPressureGradient = 0 }: FormValues) =>
