@@ -7,6 +7,7 @@ import {
   CardContent,
   Chip,
   Divider,
+  Link,
   List,
   ListItem,
 } from '@mui/material'
@@ -74,10 +75,8 @@ const HeartCard = () => {
             </Typography>
           </ListItem>
         </List>
-
         <Divider variant="middle" sx={{ my: 2 }} />
-
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+        <Typography variant="body2" color="text.secondary" mt={2}>
           Waveforms
         </Typography>
         <Box
@@ -95,10 +94,27 @@ const HeartCard = () => {
             alt="waveforms"
           />
         </Box>
+        <Typography variant="body2" color="text.secondary" mt={2}>
+          Reference:
+        </Typography>
 
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          Reference: Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.).
-          Saunders
+        <Typography variant="body2" color="text.secondary" mt={2}>
+          Md,R.M.(2008). Textbook of Clinical Hemodynamics (1st ed.). Saunders
+        </Typography>
+        <Typography variant="body2" color="text.secondary" mt={1}>
+          MSD Manuals. (n.d.). Table: Normal Pressures in the Heart and Great
+          Vessels. MSD Manual Professional Edition. Retrieved October 26, 2022,
+          from
+          <Link
+            href="https://www.msdmanuals.com/professional/multimedia/table/normal-pressures-in-the-heart-and-great-vessels"
+            underline="hover"
+            target="_blank"
+            rel="noreferrer"
+            sx={{ wordWrap: 'break-word', textAlign: 'justify' }}
+          >
+            {' '}
+            https://www.msdmanuals.com/professional/multimedia/table/normal-pressures-in-the-heart-and-great-vessels
+          </Link>
         </Typography>
       </CardContent>
     </Card>
