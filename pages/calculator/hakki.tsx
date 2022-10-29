@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography'
 
 import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/calculator'
 
 const HakkiPage: NextPage = () => {
   return (
@@ -72,6 +74,10 @@ const HakkiPage: NextPage = () => {
             height={100}
             alt="Mean pressure Gradient"
           />
+
+          <Grid item>
+            <ReferenceCard refs={refs} />
+          </Grid>
         </Grid>
       </Grid>
     </>

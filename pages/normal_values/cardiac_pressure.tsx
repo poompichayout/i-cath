@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import Meta from 'src/components/Meta'
 import CardiacPressureTable from 'src/components/Table/CardiacPressure'
 import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/normalValues'
 
 const CardiacPressurePage: NextPage = () => {
   return (
@@ -24,7 +25,7 @@ const CardiacPressurePage: NextPage = () => {
           <CardiacPressureTable />
         </Grid>
         <Grid item xs={12} sm={10} lg={8} mt={3}>
-          <ReferenceCard />
+          <ReferenceCard refs={refs} />
         </Grid>
       </Grid>
     </>

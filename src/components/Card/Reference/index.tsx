@@ -1,17 +1,21 @@
+import { useState } from 'react'
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Collapse from '@mui/material/Collapse'
+import Divider from '@mui/material/Divider'
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
 import Typography from '@mui/material/Typography'
 
 import { styled } from '@mui/material/styles'
 
-import { refs } from './constant'
-import { useState } from 'react'
+import { RefProps } from './constants/calculator'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
@@ -28,7 +32,11 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }))
 
-const ReferenceCard = () => {
+interface ReferenceCardProps {
+  refs: RefProps[]
+}
+
+const ReferenceCard = ({ refs }: ReferenceCardProps) => {
   const [expanded, setExpanded] = useState<boolean>(false)
 
   const handleExpandClick = () => {
@@ -36,8 +44,8 @@ const ReferenceCard = () => {
   }
 
   return (
-    <Card>
-      <CardContent sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <List>
+      <ListItem sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant="h5" component="div">
           Reference
         </Typography>
@@ -49,11 +57,12 @@ const ReferenceCard = () => {
         >
           <ExpandMoreIcon />
         </ExpandMore>
-      </CardContent>
+      </ListItem>
+      <Divider />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent sx={{ pt: 0 }}>
+        <List sx={{ listStyleType: 'disc', pl: 4 }}>
           {refs.map((ref, index) => (
-            <Box key={index} mt={index === 0 ? undefined : 2}>
+            <ListItem key={index} sx={{ display: 'list-item' }}>
               <Typography variant="body1">
                 {ref.text}
                 {ref.link ? (
@@ -77,17 +86,17 @@ const ReferenceCard = () => {
                         rel="noreferrer"
                         sx={{ wordWrap: 'break-word', textAlign: 'justify' }}
                       >
-                        {idx === ref.link.length - 1 ? e : `${e}, `}
+                        {idx === (ref.link?.length || 0) - 1 ? e : `${e}, `}
                       </Link>
                     ))
                   )
                 ) : null}
               </Typography>
-            </Box>
+            </ListItem>
           ))}
-        </CardContent>
+        </List>
       </Collapse>
-    </Card>
+    </List>
   )
 }
 

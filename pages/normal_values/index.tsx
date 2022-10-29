@@ -9,6 +9,8 @@ import ReferenceCard from 'src/components/Card/Reference'
 import CardiacPressureTable from 'src/components/Table/CardiacPressure'
 import NormalHemodynamicTable from 'src/components/Table/NormalHemodynamic'
 
+import { refs } from 'src/components/Card/Reference/constants/normalValues'
+
 const NormalValuesPage: NextPage = () => {
   return (
     <>
@@ -30,7 +32,7 @@ const NormalValuesPage: NextPage = () => {
           <NormalHemodynamicTable />
         </Grid>
         <Grid item xs={12} sm={10} lg={8} mt={3}>
-          <ReferenceCard />
+          <ReferenceCard refs={refs} />
         </Grid>
       </Grid>
     </>

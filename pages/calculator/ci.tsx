@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography'
 
 import CIForm from 'src/components/Form/CI'
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/calculator'
 
 const CIPage: NextPage = () => {
   const [knownCO, setKnownCO] = useState<boolean>(true)
@@ -91,6 +93,10 @@ const CIPage: NextPage = () => {
               height={100}
               alt="BSA"
             />
+          </Grid>
+
+          <Grid item>
+            <ReferenceCard refs={refs} />
           </Grid>
         </Grid>
       </Grid>

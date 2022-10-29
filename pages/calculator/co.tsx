@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography'
 
 import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/calculator'
 
 const COPage: NextPage = () => {
   return (
@@ -76,6 +78,10 @@ const COPage: NextPage = () => {
             <Typography>
               (C<sub>a</sub> - C<sub>v</sub>) = arteriovenous oxygen difference
             </Typography>
+          </Grid>
+
+          <Grid item mt={5}>
+            <ReferenceCard refs={refs} />
           </Grid>
         </Grid>
       </Grid>

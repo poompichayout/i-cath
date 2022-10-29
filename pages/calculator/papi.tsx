@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography'
 
 import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/calculator'
 
 const PAPiPage: NextPage = () => {
   return (
@@ -65,6 +67,10 @@ const PAPiPage: NextPage = () => {
             <Typography>PASP = Pulmonary artery systolic pressure</Typography>
             <Typography>PADP = Pulmonary artery diastolic pressure</Typography>
             <Typography>RAP = Right atrial pressure</Typography>
+          </Grid>
+
+          <Grid item mt={5}>
+            <ReferenceCard refs={refs} />
           </Grid>
         </Grid>
       </Grid>

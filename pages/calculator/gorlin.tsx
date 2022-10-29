@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography'
 
 import Form from 'src/components/Form'
 import Meta from 'src/components/Meta'
+import ReferenceCard from 'src/components/Card/Reference'
+import { refs } from 'src/components/Card/Reference/constants/calculator'
 
 const GorlinPage: NextPage = () => {
   return (
@@ -74,8 +76,16 @@ const GorlinPage: NextPage = () => {
           <Typography sx={{ mt: 2 }}>Note: </Typography>
           <Typography>F = CO / SEP x HR</Typography>
           <Typography>g = 980 cm/s</Typography>
-          <Typography>C<sub>c</sub> = 37.7</Typography>
-          <Typography>C<sub>v</sub> = 44.5</Typography>
+          <Typography>
+            C<sub>c</sub> = 37.7
+          </Typography>
+          <Typography>
+            C<sub>v</sub> = 44.5
+          </Typography>
+
+          <Grid item mt={5}>
+            <ReferenceCard refs={refs} />
+          </Grid>
         </Grid>
       </Grid>
     </>
