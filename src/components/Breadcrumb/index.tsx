@@ -14,15 +14,21 @@ const Breadcrumb = () => {
   const findListOfPath = () => {
     const items: { text: string; path: string }[] = []
     // find parent
-    const parentIndex = NAVBAR.findIndex((nav) =>
-      router.pathname.startsWith(nav.path)
-    )
+    const parentIndex =
+      router.pathname === '/'
+        ? 0
+        : NAVBAR.findIndex((nav) => {
+            if (nav.path === '/') return false
+            return router.pathname.startsWith(nav.path)
+          })
+
     // find sub nav
     if (parentIndex >= 0) {
       items.push({
         text: NAVBAR[parentIndex].text,
         path: NAVBAR[parentIndex].path,
       })
+
       const subNav = NAVBAR[parentIndex].sub
       if (subNav) {
         const subIndex = subNav.findIndex((nav) =>
@@ -35,6 +41,7 @@ const Breadcrumb = () => {
     }
     return items
   }
+
   const items = findListOfPath()
 
   return (

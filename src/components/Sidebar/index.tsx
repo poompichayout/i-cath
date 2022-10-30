@@ -44,7 +44,7 @@ const Sidebar = ({ open, onClose }: SidebarProps) => {
       </Toolbar>
       <Divider />
       <List disablePadding>
-        {NAVBAR.map((e, index) => (
+        {NAVBAR.filter(({ hiddenSide }) => !hiddenSide).map((e, index) => (
           <MenuListItem route={e} key={index} onClose={onClose} />
         ))}
       </List>

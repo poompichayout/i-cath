@@ -19,7 +19,7 @@ const PageInfoCard = ({ variant }: PageInfoCardProps) => {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        width: '100%',
         borderRadius: 1,
         boxShadow: (theme: Theme) => theme.shadows[1],
       }}
@@ -33,9 +33,6 @@ const PageInfoCard = ({ variant }: PageInfoCardProps) => {
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {displayData.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {displayData.description}
         </Typography>
       </CardContent>
       <CardActions>

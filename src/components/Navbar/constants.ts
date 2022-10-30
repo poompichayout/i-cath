@@ -36,6 +36,11 @@ export const SUB_NORMAL_VALUES_NAV = [
 
 export const NAVBAR = [
   {
+    path: '/',
+    text: 'Home',
+    hiddenSide: true,
+  },
+  {
     path: '/normal_values',
     text: 'Normal values',
     sub: SUB_NORMAL_VALUES_NAV,

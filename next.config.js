@@ -9,11 +9,6 @@ const nextConfig = {
         destination: '/calculator/co',
         permanent: true,
       },
-      {
-        source: '/',
-        destination: '/normal_values',
-        permanent: true,
-      },
     ]
   },
 }
