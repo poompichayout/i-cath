@@ -60,7 +60,7 @@ export default function NavLinks() {
   return (
     <NavLinksContainer>
       <LinksWrapper>
-        {NAVBAR.map((e) => (
+        {NAVBAR.filter(({ text }) => text === 'About us').map((e) => (
           <LinkItem
             key={e.path}
             active={router.pathname.startsWith(e.path) ? 1 : 0}

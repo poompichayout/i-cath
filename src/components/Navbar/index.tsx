@@ -19,6 +19,12 @@ const MiddleSection = styled(Box)`
   height: 100%;
 `
 
+const RightSection = styled(Box)`
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+`
+
 interface NavBarProps {
   toggleDrawer: () => void
 }
@@ -48,14 +54,19 @@ export default function Navbar({ toggleDrawer }: NavBarProps) {
           </>
         )}
         {!isMobile && (
-          <MiddleSection
-            sx={{
-              width: `calc(100% - ${DRAWER_WIDTH}px)`,
-              ml: `${DRAWER_WIDTH}px`,
-            }}
-          >
-            <Breadcrumb />
-          </MiddleSection>
+          <>
+            <MiddleSection
+              sx={{
+                width: `calc(100% - ${DRAWER_WIDTH}px)`,
+                ml: `${DRAWER_WIDTH}px`,
+              }}
+            >
+              <Breadcrumb />
+            </MiddleSection>
+            <RightSection>
+              <NavLinks />
+            </RightSection>
+          </>
         )}
       </Toolbar>
     </AppBar>
