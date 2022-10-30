@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 
 import styled from '@emotion/styled'
 import { useMediaQuery, useTheme } from '@mui/material'
@@ -18,7 +17,6 @@ const MiddleSection = styled(Box)`
   display: flex;
   flex: 2;
   height: 100%;
-  justify-content: center;
 `
 
 interface NavBarProps {
@@ -28,7 +26,6 @@ interface NavBarProps {
 export default function Navbar({ toggleDrawer }: NavBarProps) {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  const router = useRouter()
 
   return (
     <AppBar
@@ -57,7 +54,7 @@ export default function Navbar({ toggleDrawer }: NavBarProps) {
               ml: `${DRAWER_WIDTH}px`,
             }}
           >
-            <NavLinks />
+            <Breadcrumb />
           </MiddleSection>
         )}
       </Toolbar>
