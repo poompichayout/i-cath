@@ -70,7 +70,7 @@ const SVRPage: NextPage = () => {
           </Grid>
 
           <Grid item mt={5}>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['svr']]} />
           </Grid>
         </Grid>
       </Grid>

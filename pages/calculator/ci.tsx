@@ -96,7 +96,7 @@ const CIPage: NextPage = () => {
           </Grid>
 
           <Grid item>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['ci']]} />
           </Grid>
         </Grid>
       </Grid>

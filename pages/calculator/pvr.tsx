@@ -67,7 +67,7 @@ const PVRPage: NextPage = () => {
           </Grid>
 
           <Grid item mt={5}>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['pvr']]} />
           </Grid>
         </Grid>
       </Grid>

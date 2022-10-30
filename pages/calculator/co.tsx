@@ -81,7 +81,7 @@ const COPage: NextPage = () => {
           </Grid>
 
           <Grid item mt={5}>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['co']]} />
           </Grid>
         </Grid>
       </Grid>

@@ -65,7 +65,7 @@ const GorlinPage: NextPage = () => {
           <Grid item sx={{ ml: 5, lineHeight: 1.5 }}>
             <Typography>F = Flow</Typography>
             <Typography>
-              C<sub>c</sub> = Osrifice contraction
+              C<sub>c</sub> = Orifice contraction
             </Typography>
             <Typography>
               C<sub>v</sub> = Velocity loss coefficient
@@ -84,7 +84,7 @@ const GorlinPage: NextPage = () => {
           </Typography>
 
           <Grid item mt={5}>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['gorlin']]} />
           </Grid>
         </Grid>
       </Grid>

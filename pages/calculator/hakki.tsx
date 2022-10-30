@@ -76,7 +76,7 @@ const HakkiPage: NextPage = () => {
           />
 
           <Grid item>
-            <ReferenceCard refs={refs} />
+            <ReferenceCard refs={[refs['hakki']]} />
           </Grid>
         </Grid>
       </Grid>
