@@ -51,7 +51,7 @@ const CIForm = ({ knownCO, knownBSA }: FormProps) => {
       0.007184 * Math.pow(height, 0.725) * Math.pow(weight, 0.425)
 
     const ci = getCIKnownCO(
-      knownCO ? cardiacOutput : strokeVolume * hearthRate,
+      knownCO ? cardiacOutput : (strokeVolume / 1000) * hearthRate,
       knownBSA ? bodySurfaceArea : bsaFromWeight
     )
 
